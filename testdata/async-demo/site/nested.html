@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="utf-8"><title>嵌套 iframe</title></head>
+<body style="font-family:sans-serif;font-size:12px;margin:6px">
+<p id="n-text">嵌套 iframe 文本</p>
+<button id="n-btn">嵌套按钮</button><span id="n-out"></span>
+<script>
+document.getElementById('n-btn').addEventListener('click', function () {
+    document.getElementById('n-out').textContent = 'n-clicked';
+});
+</script>
+</body>
+</html>

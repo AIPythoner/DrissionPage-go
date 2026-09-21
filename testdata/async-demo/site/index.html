@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>DPA 功能测试台</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 16px; line-height: 1.7; }
+        section { border: 1px solid #ccc; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; }
+        section > h2 { font-size: 15px; margin: 0 0 8px; color: #06c; }
+        .out { display: inline-block; min-width: 80px; padding: 2px 6px; background: #f4f4f4;
+               border: 1px dashed #bbb; font-family: Consolas, monospace; font-size: 13px; }
+        button { margin: 2px 4px 2px 0; padding: 3px 10px; }
+        input, textarea, select { margin: 2px 4px; }
+        #hidden-box { display: none; }
+        #pseudo-ele::before { content: "PRE-"; }
+        #pseudo-ele::after { content: "-POST"; }
+        #cover-wrap { position: relative; width: 240px; height: 44px; }
+        #covered-btn { position: absolute; left: 0; top: 0; width: 200px; height: 40px; }
+        #cover-layer { position: absolute; left: 0; top: 0; width: 240px; height: 44px;
+                       background: rgba(255,0,0,.45); z-index: 10; }
+        #drag-block { width: 90px; height: 60px; background: #4a90d9; color: #fff; text-align: center;
+                      line-height: 60px; position: absolute; left: 0; top: 0; cursor: move; user-select: none; }
+        #drag-area { position: relative; width: 420px; height: 180px; border: 1px solid #999; background: #fafafa; }
+        #drop-zone { position: absolute; right: 10px; top: 60px; width: 120px; height: 60px;
+                     border: 2px dashed #090; text-align: center; line-height: 60px; }
+        #scroll-box { width: 300px; height: 120px; overflow: auto; border: 1px solid #999; }
+        #scroll-box .filler { height: 260px; background: linear-gradient(#fff, #ddd); }
+        #moving-box { width: 60px; height: 30px; background: #e67e22; color: #fff; text-align: center; }
+        .moving { animation: slide 2s linear 1; }
+        @keyframes slide { from { margin-left: 0; } to { margin-left: 260px; } }
+        table { border-collapse: collapse; }
+        td, th { border: 1px solid #999; padding: 3px 10px; }
+        .spacer { height: 900px; background: repeating-linear-gradient(#fff, #fff 40px, #f3f3f3 40px, #f3f3f3 80px); }
+        #frm-main { width: 460px; height: 200px; }
+    </style>
+</head>
+<body>
+
+<h1 id="title">你好，DrissionPage</h1>
+<p id="subtitle">异步移植版功能测试台</p>
+
+<!-- ================= 1. 基础查找 ================= -->
+<section id="s-basic">
+    <h2>1. 基础元素与属性</h2>
+    <div class="box" data-role="first" data-idx="1">第一个盒子</div>
+    <div class="box" data-role="second" data-idx="2">第二个盒子</div>
+    <div class="box" data-role="third" data-idx="3">第三个盒子</div>
+    <div id="attr-ele" class="c1 c2" data-a="va" data-b="vb" title="标题属性" lang="zh">属性元素</div>
+    <div id="html-ele">外层<span class="inner-span">内层文本</span>尾部</div>
+    <pre id="raw-ele">  前后有空白
+    第二行  </pre>
+    <div id="hidden-box">看不见</div>
+    <div id="pseudo-ele">中间</div>
+    <a id="link" href="/page2.html" title="跳转链接">普通链接</a>
+    <a id="link-blank" href="/page2.html" target="_blank">新标签页链接</a>
+    <ul id="list">
+        <li class="item odd" data-idx="1">苹果 apple</li>
+        <li class="item even" data-idx="2">香蕉 banana</li>
+        <li class="item odd" data-idx="3">橙子 orange</li>
+        <li class="item even" data-idx="4">苹果派 apple-pie</li>
+        <li class="item odd" data-idx="5" data-mark="target">葡萄 grape</li>
+        <li class="item even hidden-li" data-idx="6" style="display:none">隐藏项</li>
+    </ul>
+</section>
+
+<!-- ================= 2. 表单 ================= -->
+<section id="s-form">
+    <h2>2. 表单输入</h2>
+    <div>
+        文本 <input id="in-text" type="text" value="">
+        密码 <input id="in-pass" type="password">
+        数字 <input id="in-num" type="number" value="0">
+    </div>
+    <div>
+        回显 <input id="in-echo" type="text"> → <span id="echo-out" class="out"></span>
+    </div>
+    <div>
+        <textarea id="in-area" rows="3" cols="30"></textarea>
+    </div>
+    <div>
+        <label><input id="chk1" type="checkbox" value="A"> 选项A</label>
+        <label><input id="chk2" type="checkbox" value="B" checked> 选项B</label>
+        <label><input id="rd1" type="radio" name="rd" value="R1"> R1</label>
+        <label><input id="rd2" type="radio" name="rd" value="R2"> R2</label>
+    </div>
+    <div>
+        <select id="sel-single">
+            <option value="a">选项A</option>
+            <option value="b">选项B</option>
+            <option value="c">选项C</option>
+        </select>
+        <select id="sel-multi" multiple size="4">
+            <option value="m1">多选1</option>
+            <option value="m2">多选2</option>
+            <option value="m3">多选3</option>
+            <option value="m4">多选4</option>
+        </select>
+    </div>
+    <div>
+        <input id="in-disabled" type="text" value="禁用" disabled>
+        <input id="in-readonly" type="text" value="只读" readonly>
+    </div>
+    <div>
+        <input id="in-file" type="file" multiple>
+        <span id="file-out" class="out"></span>
+        <button id="btn-file-trigger" type="button">触发文件选择</button>
+    </div>
+    <div>
+        <button id="btn-submit" type="button">收集表单</button>
+        <span id="form-out" class="out"></span>
+    </div>
+</section>
+
+<!-- ================= 3. 点击 ================= -->
+<section id="s-click">
+    <h2>3. 点击行为</h2>
+    <button id="btn-click">单击</button> 计数 <span id="click-count" class="out">0</span>
+    <button id="btn-dbl">双击</button> <span id="dbl-out" class="out"></span>
+    <button id="btn-right">右键</button> <span id="right-out" class="out"></span>
+    <button id="btn-middle">中键</button> <span id="middle-out" class="out"></span>
+    <button id="btn-hover">悬停</button> <span id="hover-out" class="out"></span>
+    <button id="btn-delay">延迟响应</button> <span id="delay-out" class="out"></span>
+    <div id="cover-wrap">
+        <button id="covered-btn">被遮住的按钮</button>
+        <div id="cover-layer"></div>
+    </div>
+    <span id="covered-out" class="out"></span>
+    <button id="btn-uncover">移除遮罩</button>
+</section>
+
+<!-- ================= 4. 鼠标动作 ================= -->
+<section id="s-drag">
+    <h2>4. 鼠标动作与拖拽</h2>
+    <div id="drag-area">
+        <div id="drag-block">拖我</div>
+        <div id="drop-zone">放这里</div>
+    </div>
+    位置 <span id="drag-out" class="out">0,0</span>
+    投放 <span id="drop-out" class="out"></span>
+    鼠标 <span id="mouse-out" class="out"></span>
+    滚轮 <span id="wheel-out" class="out">0</span>
+</section>
+
+<!-- ================= 5. 键盘 ================= -->
+<section id="s-key">
+    <h2>5. 键盘事件</h2>
+    <input id="key-input" type="text" placeholder="在此输入">
+    按键序列 <span id="key-log" class="out"></span>
+    组合键 <span id="combo-out" class="out"></span>
+</section>
+
+<!-- ================= 6. 动态与等待 ================= -->
+<section id="s-wait">
+    <h2>6. 动态元素与等待</h2>
+    <button id="btn-spawn">800ms 后新增</button>
+    <span id="spawn-holder"></span>
+    <button id="btn-remove">800ms 后删除</button>
+    <span id="to-remove">待删除</span>
+    <button id="btn-hide">800ms 后隐藏</button>
+    <span id="to-hide">待隐藏</span>
+    <button id="btn-enable">800ms 后启用</button>
+    <input id="to-enable" type="text" value="待启用" disabled>
+    <div>
+        <button id="btn-move">开始移动</button>
+        <div id="moving-box">移动块</div>
+    </div>
+</section>
+
+<!-- ================= 7. 滚动 ================= -->
+<section id="s-scroll">
+    <h2>7. 滚动</h2>
+    <div id="scroll-box">
+        <div class="filler"></div>
+        <div id="deep-ele">滚动容器深处的元素</div>
+        <div class="filler"></div>
+    </div>
+    页面滚动位置 <span id="scroll-out" class="out">0</span>
+</section>
+
+<!-- ================= 8. iframe ================= -->
+<section id="s-frame">
+    <h2>8. iframe</h2>
+    <iframe id="frm-main" src="/frame.html"></iframe>
+    <iframe id="frm-srcdoc" srcdoc="<html><body><p id='sd-text'>srcdoc 内部文本</p></body></html>"
+            style="width:300px;height:60px"></iframe>
+</section>
+
+<!-- ================= 9. Shadow DOM ================= -->
+<section id="s-shadow">
+    <h2>9. Shadow DOM</h2>
+    <div id="shadow-host"></div>
+    <span id="sr-report" class="out"></span>
+</section>
+
+<!-- ================= 10. 弹窗 ================= -->
+<section id="s-alert">
+    <h2>10. 弹窗</h2>
+    <button id="btn-alert">alert</button>
+    <button id="btn-confirm">confirm</button>
+    <button id="btn-prompt">prompt</button>
+    <span id="alert-out" class="out"></span>
+</section>
+
+<!-- ================= 11. 网络 ================= -->
+<section id="s-net">
+    <h2>11. 网络请求</h2>
+    <button id="btn-fetch">GET /api/echo</button>
+    <button id="btn-post">POST /api/echo</button>
+    <button id="btn-xhr">XHR /api/echo</button>
+    <button id="btn-slow">GET /api/slow</button>
+    <span id="net-out" class="out"></span>
+</section>
+
+<!-- ================= 12. 导航 ================= -->
+<section id="s-nav">
+    <h2>12. 导航与标题</h2>
+    <button id="btn-push">pushState 改 URL</button>
+    <button id="btn-title">改标题</button>
+    <button id="btn-open">window.open</button>
+</section>
+
+<!-- ================= 13. 下载 ================= -->
+<section id="s-download">
+    <h2>13. 下载</h2>
+    <a id="link-download" href="/download/sample.txt" download="sample.txt">下载 sample.txt</a>
+</section>
+
+<!-- ================= 14. console ================= -->
+<section id="s-console">
+    <h2>14. console 输出</h2>
+    <button id="btn-log">console.log</button>
+    <button id="btn-err">抛出异常</button>
+    <button id="btn-cerr">console.error</button>
+    <button id="btn-warn">console.warn</button>
+</section>
+
+<!-- ================= 15. 表格与相对定位 ================= -->
+<section id="s-table">
+    <h2>15. 表格（相对定位）</h2>
+    <table id="tbl">
+        <tr><th>姓名</th><th>年龄</th><th>操作</th></tr>
+        <tr id="row1"><td class="name">张三</td><td class="age">18</td><td><button class="op">操作1</button></td></tr>
+        <tr id="row2"><td class="name">李四</td><td class="age">22</td><td><button class="op">操作2</button></td></tr>
+        <tr id="row3"><td class="name">王五</td><td class="age">30</td><td><button class="op">操作3</button></td></tr>
+    </table>
+</section>
+
+<!-- ================= 15b. 方位定位 ================= -->
+<section id="s-dir">
+    <h2>15b. 方位定位</h2>
+    <div style="position:relative;height:150px;width:420px;border:1px solid #999">
+        <span id="d-center" style="position:absolute;left:180px;top:60px">中心</span>
+        <span id="d-east"   style="position:absolute;left:320px;top:60px">东</span>
+        <span id="d-west"   style="position:absolute;left:30px;top:60px">西</span>
+        <span id="d-north"  style="position:absolute;left:180px;top:10px">北</span>
+        <span id="d-south"  style="position:absolute;left:180px;top:115px">南</span>
+    </div>
+</section>
+
+<!-- ================= 16. 图片与存储 ================= -->
+<section id="s-misc">
+    <h2>16. 图片 / 存储</h2>
+    <img id="img1" src="/img/dot.png" alt="测试图" width="60" height="60">
+    <button id="btn-storage">写入 storage</button>
+    <span id="storage-out" class="out"></span>
+</section>
+
+<!-- ================= 17. 链式查找（单次 await） ================= -->
+<section id="s-thenable">
+    <h2>17. 链式查找（单次 await）</h2>
+    <div id="chain-outer" data-role="outer">
+        <div id="chain-mid" class="chain-box" data-role="mid">
+            <span id="chain-text">嵌套文本</span>
+            <button id="chain-btn" type="button">嵌套点击</button>
+            <span id="chain-out" class="out">0</span>
+            <span class="chain-item" data-idx="1">链一项</span>
+            <span class="chain-item" data-idx="2">链二项</span>
+        </div>
+    </div>
+</section>
+
+<div class="spacer"></div>
+<div id="bottom-ele">页面底部元素</div>
+
+<script>
+(function () {
+    var $ = function (id) { return document.getElementById(id); };
+    var set = function (id, v) { $(id).textContent = String(v); };
+
+    // ---- 2. 表单 ----
+    $('in-echo').addEventListener('input', function () { set('echo-out', this.value); });
+    $('in-file').addEventListener('change', function () {
+        var names = [];
+        for (var i = 0; i < this.files.length; i++) { names.push(this.files[i].name); }
+        set('file-out', names.join('|'));
+    });
+    $('btn-file-trigger').addEventListener('click', function () { $('in-file').click(); });
+    $('btn-submit').addEventListener('click', function () {
+        var multi = [];
+        var opts = $('sel-multi').options;
+        for (var i = 0; i < opts.length; i++) { if (opts[i].selected) { multi.push(opts[i].value); } }
+        var rd = document.querySelector('input[name=rd]:checked');
+        set('form-out', JSON.stringify({
+            text: $('in-text').value,
+            pass: $('in-pass').value,
+            num: $('in-num').value,
+            area: $('in-area').value,
+            chk1: $('chk1').checked,
+            chk2: $('chk2').checked,
+            rd: rd ? rd.value : null,
+            single: $('sel-single').value,
+            multi: multi
+        }));
+    });
+
+    // ---- 3. 点击 ----
+    var clicks = 0;
+    $('btn-click').addEventListener('click', function () { clicks += 1; set('click-count', clicks); });
+    $('btn-dbl').addEventListener('dblclick', function () { set('dbl-out', 'dblclick'); });
+    $('btn-right').addEventListener('contextmenu', function (e) { e.preventDefault(); set('right-out', 'contextmenu'); });
+    $('btn-middle').addEventListener('auxclick', function (e) { if (e.button === 1) { set('middle-out', 'middle'); } });
+    $('btn-middle').addEventListener('mousedown', function (e) { if (e.button === 1) { e.preventDefault(); } });
+    $('btn-hover').addEventListener('mouseenter', function () { set('hover-out', 'hovered'); });
+    $('btn-delay').addEventListener('click', function () {
+        set('delay-out', 'pending');
+        setTimeout(function () { set('delay-out', 'done'); }, 800);
+    });
+    $('covered-btn').addEventListener('click', function () { set('covered-out', 'clicked'); });
+    $('btn-uncover').addEventListener('click', function () { $('cover-layer').style.display = 'none'; });
+
+    // ---- 4. 鼠标动作 ----
+    var block = $('drag-block'), dragging = false, sx = 0, sy = 0, bx = 0, by = 0;
+    block.addEventListener('mousedown', function (e) {
+        dragging = true; sx = e.clientX; sy = e.clientY;
+        bx = parseInt(block.style.left || '0', 10); by = parseInt(block.style.top || '0', 10);
+        e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) {
+        set('mouse-out', e.clientX + ',' + e.clientY);
+        if (!dragging) { return; }
+        var nx = bx + (e.clientX - sx), ny = by + (e.clientY - sy);
+        block.style.left = nx + 'px'; block.style.top = ny + 'px';
+        set('drag-out', nx + ',' + ny);
+    });
+    document.addEventListener('mouseup', function (e) {
+        if (!dragging) { return; }
+        dragging = false;
+        var z = $('drop-zone').getBoundingClientRect();
+        var b = block.getBoundingClientRect();
+        var cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+        if (cx >= z.left && cx <= z.right && cy >= z.top && cy <= z.bottom) { set('drop-out', 'dropped'); }
+    });
+    var wheel = 0;
+    $('drag-area').addEventListener('wheel', function (e) { wheel += e.deltaY; set('wheel-out', Math.round(wheel)); });
+
+    // ---- 5. 键盘 ----
+    var keys = [];
+    $('key-input').addEventListener('keydown', function (e) {
+        keys.push(e.key);
+        if (keys.length > 12) { keys.shift(); }
+        set('key-log', keys.join(','));
+        if (e.ctrlKey && e.key.toLowerCase() === 'b') { set('combo-out', 'ctrl+b'); e.preventDefault(); }
+        if (e.ctrlKey && e.key.toLowerCase() === 'a') { set('combo-out', 'ctrl+a'); }
+    });
+
+    // ---- 6. 动态元素 ----
+    $('btn-spawn').addEventListener('click', function () {
+        setTimeout(function () {
+            var s = document.createElement('span');
+            s.id = 'spawned'; s.textContent = '我出现了';
+            $('spawn-holder').appendChild(s);
+        }, 800);
+    });
+    $('btn-remove').addEventListener('click', function () {
+        setTimeout(function () { var e = $('to-remove'); if (e) { e.parentNode.removeChild(e); } }, 800);
+    });
+    $('btn-hide').addEventListener('click', function () {
+        setTimeout(function () { $('to-hide').style.display = 'none'; }, 800);
+    });
+    $('btn-enable').addEventListener('click', function () {
+        setTimeout(function () { $('to-enable').removeAttribute('disabled'); }, 800);
+    });
+    $('btn-move').addEventListener('click', function () {
+        var m = $('moving-box');
+        m.classList.remove('moving');
+        void m.offsetWidth;
+        m.classList.add('moving');
+    });
+
+    // ---- 7. 滚动 ----
+    window.addEventListener('scroll', function () { set('scroll-out', Math.round(window.scrollY)); });
+
+    // ---- 9. Shadow DOM ----
+    var host = $('shadow-host');
+    var sr = host.attachShadow({ mode: 'open' });
+    sr.innerHTML = '<style>p{color:#093}</style>'
+        + '<p id="sr-text">shadow 内部文本</p>'
+        + '<input id="sr-input" type="text">'
+        + '<button id="sr-btn">shadow 按钮</button>'
+        + '<span id="sr-out"></span>';
+    sr.getElementById('sr-btn').addEventListener('click', function () {
+        sr.getElementById('sr-out').textContent = 'sr-clicked:' + sr.getElementById('sr-input').value;
+        set('sr-report', 'sr-clicked:' + sr.getElementById('sr-input').value);
+    });
+
+    // ---- 10. 弹窗 ----
+    $('btn-alert').addEventListener('click', function () { window.alert('这是 alert'); set('alert-out', 'alert-done'); });
+    $('btn-confirm').addEventListener('click', function () { set('alert-out', 'confirm:' + window.confirm('确定吗？')); });
+    $('btn-prompt').addEventListener('click', function () { set('alert-out', 'prompt:' + window.prompt('请输入', '')); });
+
+    // ---- 11. 网络 ----
+    $('btn-fetch').addEventListener('click', function () {
+        fetch('/api/echo?src=fetch').then(function (r) { return r.json(); })
+            .then(function (d) { set('net-out', 'fetch:' + d.query.src); });
+    });
+    $('btn-post').addEventListener('click', function () {
+        fetch('/api/echo', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ src: 'post', n: 7 })
+        }).then(function (r) { return r.json(); }).then(function (d) { set('net-out', 'post:' + d.body.n); });
+    });
+    $('btn-xhr').addEventListener('click', function () {
+        var x = new XMLHttpRequest();
+        x.open('GET', '/api/echo?src=xhr');
+        x.onload = function () { set('net-out', 'xhr:' + JSON.parse(x.responseText).query.src); };
+        x.send();
+    });
+    $('btn-slow').addEventListener('click', function () {
+        set('net-out', 'slow-pending');
+        fetch('/api/slow?ms=1200').then(function (r) { return r.text(); })
+            .then(function () { set('net-out', 'slow-done'); });
+    });
+
+    // ---- 12. 导航 ----
+    $('btn-push').addEventListener('click', function () { history.pushState({}, '', '/index.html?pushed=1'); });
+    $('btn-title').addEventListener('click', function () { document.title = 'DPA 标题已改'; });
+    $('btn-open').addEventListener('click', function () { window.open('/page2.html', '_blank'); });
+
+    // ---- 14. console ----
+    $('btn-log').addEventListener('click', function () { console.log('DPA-CONSOLE-TEST', 123); });
+    $('btn-err').addEventListener('click', function () { setTimeout(function () { throw new Error('DPA-ERROR-TEST'); }, 0); });
+    $('btn-cerr').addEventListener('click', function () { console.error('DPA-CONSOLE-ERROR', {a: 1}); });
+    $('btn-warn').addEventListener('click', function () { console.warn('DPA-CONSOLE-WARN'); });
+
+    // ---- 16. storage ----
+    $('btn-storage').addEventListener('click', function () {
+        localStorage.setItem('dpa_local', 'L-VALUE');
+        sessionStorage.setItem('dpa_session', 'S-VALUE');
+        set('storage-out', 'stored');
+    });
+
+    // ---- 17. 链式查找 ----
+    var chainClicks = 0;
+    $('chain-btn').addEventListener('click', function () {
+        chainClicks += 1;
+        set('chain-out', chainClicks);
+    });
+})();
+</script>
+</body>
+</html>

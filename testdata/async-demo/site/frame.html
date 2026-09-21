@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>iframe 内页</title>
+    <style>
+        body { font-family: "Microsoft YaHei", sans-serif; margin: 8px; font-size: 13px; }
+        .out { display: inline-block; min-width: 70px; padding: 1px 5px; background: #eee;
+               border: 1px dashed #bbb; font-family: Consolas, monospace; }
+        #f-nested { width: 260px; height: 60px; }
+        #f-spacer { height: 400px; background: repeating-linear-gradient(#fff, #fff 20px, #eee 20px, #eee 40px); }
+    </style>
+</head>
+<body>
+<p id="f-title">iframe 内部文本</p>
+<input id="f-input" type="text">
+<button id="f-btn">iframe 按钮</button>
+<span id="f-out" class="out"></span>
+<div class="f-box" data-i="1">frame 盒子1</div>
+<div class="f-box" data-i="2">frame 盒子2</div>
+<iframe id="f-nested" src="/nested.html"></iframe>
+<div id="f-spacer"></div>
+<div id="f-bottom">frame 底部元素</div>
+<script>
+    document.getElementById('f-btn').addEventListener('click', function () {
+        document.getElementById('f-out').textContent = 'f-clicked:' + document.getElementById('f-input').value;
+    });
+</script>
+</body>
+</html>
