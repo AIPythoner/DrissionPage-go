@@ -1,208 +1,398 @@
-{"Time":"2026-09-21T16:17:54.7814707+08:00","Action":"start","Package":"drissionpage"}
-{"Time":"2026-09-21T16:17:54.7814707+08:00","Action":"start","Package":"drissionpage/cmd/drissionpage"}
-{"Time":"2026-09-21T16:17:54.7814707+08:00","Action":"output","Package":"drissionpage/cmd/drissionpage","Output":"?   \tdrissionpage/cmd/drissionpage\t[no test files]\n"}
-{"Time":"2026-09-21T16:17:54.7814707+08:00","Action":"skip","Package":"drissionpage/cmd/drissionpage","Elapsed":0}
-{"Time":"2026-09-21T16:17:54.7824768+08:00","Action":"start","Package":"drissionpage/internal/rod"}
-{"Time":"2026-09-21T16:17:54.7824768+08:00","Action":"output","Package":"drissionpage/internal/rod","Output":"?   \tdrissionpage/internal/rod\t[no test files]\n"}
-{"Time":"2026-09-21T16:17:54.7824768+08:00","Action":"skip","Package":"drissionpage/internal/rod","Elapsed":0}
-{"Time":"2026-09-21T16:17:55.7220426+08:00","Action":"run","Package":"drissionpage","Test":"TestINI"}
-{"Time":"2026-09-21T16:17:55.7220426+08:00","Action":"output","Package":"drissionpage","Test":"TestINI","Output":"=== RUN   TestINI\n"}
-{"Time":"2026-09-21T16:17:55.7252036+08:00","Action":"output","Package":"drissionpage","Test":"TestINI","Output":"--- PASS: TestINI (0.00s)\n"}
-{"Time":"2026-09-21T16:17:55.7252036+08:00","Action":"pass","Package":"drissionpage","Test":"TestINI","Elapsed":0}
-{"Time":"2026-09-21T16:17:55.7252036+08:00","Action":"run","Package":"drissionpage","Test":"TestStreamingAndLifetimes"}
-{"Time":"2026-09-21T16:17:55.7252036+08:00","Action":"output","Package":"drissionpage","Test":"TestStreamingAndLifetimes","Output":"=== RUN   TestStreamingAndLifetimes\n"}
-{"Time":"2026-09-21T16:17:58.1138089+08:00","Action":"output","Package":"drissionpage","Test":"TestStreamingAndLifetimes","Output":"--- PASS: TestStreamingAndLifetimes (2.39s)\n"}
-{"Time":"2026-09-21T16:17:58.1143266+08:00","Action":"pass","Package":"drissionpage","Test":"TestStreamingAndLifetimes","Elapsed":2.39}
-{"Time":"2026-09-21T16:17:58.1143266+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo"}
-{"Time":"2026-09-21T16:17:58.1143266+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo","Output":"=== RUN   TestAsyncHTMLDemo\n"}
-{"Time":"2026-09-21T16:17:58.524069+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/01_locators_attributes"}
-{"Time":"2026-09-21T16:17:58.524069+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/01_locators_attributes","Output":"=== RUN   TestAsyncHTMLDemo/01_locators_attributes\n"}
-{"Time":"2026-09-21T16:17:58.9227635+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/01_locators_attributes","Output":"--- PASS: TestAsyncHTMLDemo/01_locators_attributes (0.40s)\n"}
-{"Time":"2026-09-21T16:17:58.9227635+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/01_locators_attributes","Elapsed":0.4}
-{"Time":"2026-09-21T16:17:58.9227635+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/02_forms_select_upload"}
-{"Time":"2026-09-21T16:17:58.9227635+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Output":"=== RUN   TestAsyncHTMLDemo/02_forms_select_upload\n"}
-{"Time":"2026-09-21T16:17:59.5963352+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Output":"--- PASS: TestAsyncHTMLDemo/02_forms_select_upload (0.67s)\n"}
-{"Time":"2026-09-21T16:17:59.5963352+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Elapsed":0.67}
-{"Time":"2026-09-21T16:17:59.5963352+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/03_click_events"}
-{"Time":"2026-09-21T16:17:59.5963352+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/03_click_events","Output":"=== RUN   TestAsyncHTMLDemo/03_click_events\n"}
-{"Time":"2026-09-21T16:18:01.4443039+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/03_click_events","Output":"--- PASS: TestAsyncHTMLDemo/03_click_events (1.85s)\n"}
-{"Time":"2026-09-21T16:18:01.4443039+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/03_click_events","Elapsed":1.85}
-{"Time":"2026-09-21T16:18:01.4443039+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel"}
-{"Time":"2026-09-21T16:18:01.4443039+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Output":"=== RUN   TestAsyncHTMLDemo/04_drag_mouse_wheel\n"}
-{"Time":"2026-09-21T16:18:02.1248019+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Output":"--- PASS: TestAsyncHTMLDemo/04_drag_mouse_wheel (0.68s)\n"}
-{"Time":"2026-09-21T16:18:02.1248019+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Elapsed":0.68}
-{"Time":"2026-09-21T16:18:02.1248019+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/05_keyboard_actions"}
-{"Time":"2026-09-21T16:18:02.1248019+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Output":"=== RUN   TestAsyncHTMLDemo/05_keyboard_actions\n"}
-{"Time":"2026-09-21T16:18:02.539989+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Output":"--- PASS: TestAsyncHTMLDemo/05_keyboard_actions (0.42s)\n"}
-{"Time":"2026-09-21T16:18:02.539989+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Elapsed":0.42}
-{"Time":"2026-09-21T16:18:02.539989+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/06_dynamic_waits"}
-{"Time":"2026-09-21T16:18:02.539989+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Output":"=== RUN   TestAsyncHTMLDemo/06_dynamic_waits\n"}
-{"Time":"2026-09-21T16:18:09.6519908+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Output":"--- PASS: TestAsyncHTMLDemo/06_dynamic_waits (7.11s)\n"}
-{"Time":"2026-09-21T16:18:09.6519908+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Elapsed":7.11}
-{"Time":"2026-09-21T16:18:09.6519908+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/07_scroll"}
-{"Time":"2026-09-21T16:18:09.6519908+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/07_scroll","Output":"=== RUN   TestAsyncHTMLDemo/07_scroll\n"}
-{"Time":"2026-09-21T16:18:09.951228+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/07_scroll","Output":"--- PASS: TestAsyncHTMLDemo/07_scroll (0.30s)\n"}
-{"Time":"2026-09-21T16:18:09.951228+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/07_scroll","Elapsed":0.3}
-{"Time":"2026-09-21T16:18:09.951228+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc"}
-{"Time":"2026-09-21T16:18:09.951228+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Output":"=== RUN   TestAsyncHTMLDemo/08_frames_nested_srcdoc\n"}
-{"Time":"2026-09-21T16:18:10.3089764+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Output":"--- PASS: TestAsyncHTMLDemo/08_frames_nested_srcdoc (0.36s)\n"}
-{"Time":"2026-09-21T16:18:10.3089764+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Elapsed":0.36}
-{"Time":"2026-09-21T16:18:10.3089764+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/09_shadow"}
-{"Time":"2026-09-21T16:18:10.3089764+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/09_shadow","Output":"=== RUN   TestAsyncHTMLDemo/09_shadow\n"}
-{"Time":"2026-09-21T16:18:10.6289505+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/09_shadow","Output":"--- PASS: TestAsyncHTMLDemo/09_shadow (0.32s)\n"}
-{"Time":"2026-09-21T16:18:10.6289505+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/09_shadow","Elapsed":0.32}
-{"Time":"2026-09-21T16:18:10.6289505+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/10_dialogs"}
-{"Time":"2026-09-21T16:18:10.6289505+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/10_dialogs","Output":"=== RUN   TestAsyncHTMLDemo/10_dialogs\n"}
-{"Time":"2026-09-21T16:18:10.9775615+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/10_dialogs","Output":"--- PASS: TestAsyncHTMLDemo/10_dialogs (0.35s)\n"}
-{"Time":"2026-09-21T16:18:10.9775615+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/10_dialogs","Elapsed":0.35}
-{"Time":"2026-09-21T16:18:10.9775615+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/11_network"}
-{"Time":"2026-09-21T16:18:10.9775615+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/11_network","Output":"=== RUN   TestAsyncHTMLDemo/11_network\n"}
-{"Time":"2026-09-21T16:18:13.4559156+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/11_network","Output":"--- PASS: TestAsyncHTMLDemo/11_network (2.48s)\n"}
-{"Time":"2026-09-21T16:18:13.4559156+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/11_network","Elapsed":2.48}
-{"Time":"2026-09-21T16:18:13.4559156+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/12_navigation"}
-{"Time":"2026-09-21T16:18:13.4559156+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/12_navigation","Output":"=== RUN   TestAsyncHTMLDemo/12_navigation\n"}
-{"Time":"2026-09-21T16:18:18.9215529+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/12_navigation","Output":"--- PASS: TestAsyncHTMLDemo/12_navigation (5.47s)\n"}
-{"Time":"2026-09-21T16:18:18.9215529+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/12_navigation","Elapsed":5.47}
-{"Time":"2026-09-21T16:18:18.9215529+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/13_download"}
-{"Time":"2026-09-21T16:18:18.9215529+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/13_download","Output":"=== RUN   TestAsyncHTMLDemo/13_download\n"}
-{"Time":"2026-09-21T16:18:19.3227232+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/13_download","Output":"--- PASS: TestAsyncHTMLDemo/13_download (0.40s)\n"}
-{"Time":"2026-09-21T16:18:19.3227232+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/13_download","Elapsed":0.4}
-{"Time":"2026-09-21T16:18:19.3227232+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/14_console"}
-{"Time":"2026-09-21T16:18:19.3227232+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/14_console","Output":"=== RUN   TestAsyncHTMLDemo/14_console\n"}
-{"Time":"2026-09-21T16:18:19.6680391+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/14_console","Output":"--- PASS: TestAsyncHTMLDemo/14_console (0.35s)\n"}
-{"Time":"2026-09-21T16:18:19.6680391+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/14_console","Elapsed":0.35}
-{"Time":"2026-09-21T16:18:19.6680391+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/15_relations_geometry"}
-{"Time":"2026-09-21T16:18:19.6680391+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/15_relations_geometry","Output":"=== RUN   TestAsyncHTMLDemo/15_relations_geometry\n"}
-{"Time":"2026-09-21T16:18:19.9344919+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/15_relations_geometry","Output":"--- PASS: TestAsyncHTMLDemo/15_relations_geometry (0.27s)\n"}
-{"Time":"2026-09-21T16:18:19.9344919+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/15_relations_geometry","Elapsed":0.27}
-{"Time":"2026-09-21T16:18:19.9344919+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot"}
-{"Time":"2026-09-21T16:18:19.9344919+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Output":"=== RUN   TestAsyncHTMLDemo/16_storage_image_screenshot\n"}
-{"Time":"2026-09-21T16:18:20.2529231+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Output":"--- PASS: TestAsyncHTMLDemo/16_storage_image_screenshot (0.32s)\n"}
-{"Time":"2026-09-21T16:18:20.2529231+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Elapsed":0.32}
-{"Time":"2026-09-21T16:18:20.2529231+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/17_nested_lookup"}
-{"Time":"2026-09-21T16:18:20.2529231+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/17_nested_lookup","Output":"=== RUN   TestAsyncHTMLDemo/17_nested_lookup\n"}
-{"Time":"2026-09-21T16:18:20.5526351+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/17_nested_lookup","Output":"--- PASS: TestAsyncHTMLDemo/17_nested_lookup (0.30s)\n"}
-{"Time":"2026-09-21T16:18:20.5526351+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/17_nested_lookup","Elapsed":0.3}
-{"Time":"2026-09-21T16:18:20.5526351+08:00","Action":"run","Package":"drissionpage","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency"}
-{"Time":"2026-09-21T16:18:20.5526351+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Output":"=== RUN   TestAsyncHTMLDemo/18_session_hybrid_concurrency\n"}
-{"Time":"2026-09-21T16:18:20.8565217+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Output":"--- PASS: TestAsyncHTMLDemo/18_session_hybrid_concurrency (0.30s)\n"}
-{"Time":"2026-09-21T16:18:20.8565217+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Elapsed":0.3}
-{"Time":"2026-09-21T16:18:22.0134559+08:00","Action":"output","Package":"drissionpage","Test":"TestAsyncHTMLDemo","Output":"--- PASS: TestAsyncHTMLDemo (23.90s)\n"}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"pass","Package":"drissionpage","Test":"TestAsyncHTMLDemo","Elapsed":23.9}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"run","Package":"drissionpage","Test":"TestTextAndRelations"}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"output","Package":"drissionpage","Test":"TestTextAndRelations","Output":"=== RUN   TestTextAndRelations\n"}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"output","Package":"drissionpage","Test":"TestTextAndRelations","Output":"--- PASS: TestTextAndRelations (0.00s)\n"}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"pass","Package":"drissionpage","Test":"TestTextAndRelations","Elapsed":0}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"run","Package":"drissionpage","Test":"TestHybridAndAdvanced"}
-{"Time":"2026-09-21T16:18:22.0144427+08:00","Action":"output","Package":"drissionpage","Test":"TestHybridAndAdvanced","Output":"=== RUN   TestHybridAndAdvanced\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestHybridAndAdvanced","Output":"--- PASS: TestHybridAndAdvanced (2.44s)\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"pass","Package":"drissionpage","Test":"TestHybridAndAdvanced","Elapsed":2.44}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators","Output":"=== RUN   TestStaticLocators\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/#link"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/#link","Output":"=== RUN   TestStaticLocators/#link\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/#link","Output":"--- PASS: TestStaticLocators/#link (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/#link","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/css:li[data-n='2']"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/css:li[data-n='2']","Output":"=== RUN   TestStaticLocators/css:li[data-n='2']\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/css:li[data-n='2']","Output":"--- PASS: TestStaticLocators/css:li[data-n='2'] (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/css:li[data-n='2']","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/xpath://li[1]"}
-{"Time":"2026-09-21T16:18:24.4585826+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/xpath://li[1]","Output":"=== RUN   TestStaticLocators/xpath://li[1]\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/xpath://li[1]","Output":"--- PASS: TestStaticLocators/xpath://li[1] (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/xpath://li[1]","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/@id=link"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/@id=link","Output":"=== RUN   TestStaticLocators/@id=link\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/@id=link","Output":"--- PASS: TestStaticLocators/@id=link (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/@id=link","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Output":"=== RUN   TestStaticLocators/tag:li@@class=item@@data-n=2\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Output":"--- PASS: TestStaticLocators/tag:li@@class=item@@data-n=2 (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/text^你好"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/text^你好","Output":"=== RUN   TestStaticLocators/text^你好\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/text^你好","Output":"--- PASS: TestStaticLocators/text^你好 (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/text^你好","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/text=one"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/text=one","Output":"=== RUN   TestStaticLocators/text=one\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/text=one","Output":"--- PASS: TestStaticLocators/text=one (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/text=one","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestStaticLocators/{id_link}"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/{id_link}","Output":"=== RUN   TestStaticLocators/{id_link}\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators/{id_link}","Output":"--- PASS: TestStaticLocators/{id_link} (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators/{id_link}","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestStaticLocators","Output":"--- PASS: TestStaticLocators (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"pass","Package":"drissionpage","Test":"TestStaticLocators","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"run","Package":"drissionpage","Test":"TestSession"}
-{"Time":"2026-09-21T16:18:24.4591113+08:00","Action":"output","Package":"drissionpage","Test":"TestSession","Output":"=== RUN   TestSession\n"}
-{"Time":"2026-09-21T16:18:24.4636188+08:00","Action":"output","Package":"drissionpage","Test":"TestSession","Output":"--- PASS: TestSession (0.00s)\n"}
-{"Time":"2026-09-21T16:18:24.4636188+08:00","Action":"pass","Package":"drissionpage","Test":"TestSession","Elapsed":0}
-{"Time":"2026-09-21T16:18:24.4636188+08:00","Action":"run","Package":"drissionpage","Test":"TestBrowser"}
-{"Time":"2026-09-21T16:18:24.4636188+08:00","Action":"output","Package":"drissionpage","Test":"TestBrowser","Output":"=== RUN   TestBrowser\n"}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"output","Package":"drissionpage","Test":"TestBrowser","Output":"--- PASS: TestBrowser (2.37s)\n"}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"pass","Package":"drissionpage","Test":"TestBrowser","Elapsed":2.37}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"run","Package":"drissionpage","Test":"TestDownloadFilenamePolicies"}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies","Output":"=== RUN   TestDownloadFilenamePolicies\n"}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"run","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/rename"}
-{"Time":"2026-09-21T16:18:26.830605+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/rename","Output":"=== RUN   TestDownloadFilenamePolicies/rename\n"}
-{"Time":"2026-09-21T16:18:26.8354349+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/rename","Output":"--- PASS: TestDownloadFilenamePolicies/rename (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8354349+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/rename","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8354349+08:00","Action":"run","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/overwrite"}
-{"Time":"2026-09-21T16:18:26.8354349+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/overwrite","Output":"=== RUN   TestDownloadFilenamePolicies/overwrite\n"}
-{"Time":"2026-09-21T16:18:26.8392076+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/overwrite","Output":"--- PASS: TestDownloadFilenamePolicies/overwrite (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8392076+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/overwrite","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8392076+08:00","Action":"run","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/skip"}
-{"Time":"2026-09-21T16:18:26.8392076+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/skip","Output":"=== RUN   TestDownloadFilenamePolicies/skip\n"}
-{"Time":"2026-09-21T16:18:26.8430462+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/skip","Output":"--- PASS: TestDownloadFilenamePolicies/skip (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8430462+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/skip","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8430462+08:00","Action":"run","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/error"}
-{"Time":"2026-09-21T16:18:26.8430462+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/error","Output":"=== RUN   TestDownloadFilenamePolicies/error\n"}
-{"Time":"2026-09-21T16:18:26.8461536+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/error","Output":"--- PASS: TestDownloadFilenamePolicies/error (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8461536+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownloadFilenamePolicies/error","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestDownloadFilenamePolicies","Output":"--- PASS: TestDownloadFilenamePolicies (0.02s)\n"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownloadFilenamePolicies","Elapsed":0.02}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"run","Package":"drissionpage","Test":"TestCookieMetadataAndDeletion"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestCookieMetadataAndDeletion","Output":"=== RUN   TestCookieMetadataAndDeletion\n"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestCookieMetadataAndDeletion","Output":"--- PASS: TestCookieMetadataAndDeletion (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"pass","Package":"drissionpage","Test":"TestCookieMetadataAndDeletion","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"run","Package":"drissionpage","Test":"TestBoundedQueue"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestBoundedQueue","Output":"=== RUN   TestBoundedQueue\n"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestBoundedQueue","Output":"--- PASS: TestBoundedQueue (0.00s)\n"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"pass","Package":"drissionpage","Test":"TestBoundedQueue","Elapsed":0}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"run","Package":"drissionpage","Test":"TestFrameRebindingAndFileDrop"}
-{"Time":"2026-09-21T16:18:26.8487446+08:00","Action":"output","Package":"drissionpage","Test":"TestFrameRebindingAndFileDrop","Output":"=== RUN   TestFrameRebindingAndFileDrop\n"}
-{"Time":"2026-09-21T16:18:38.9104869+08:00","Action":"output","Package":"drissionpage","Test":"TestFrameRebindingAndFileDrop","Output":"--- PASS: TestFrameRebindingAndFileDrop (12.06s)\n"}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"pass","Package":"drissionpage","Test":"TestFrameRebindingAndFileDrop","Elapsed":12.06}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"run","Package":"drissionpage","Test":"TestRedirectExtraOrdering"}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"output","Package":"drissionpage","Test":"TestRedirectExtraOrdering","Output":"=== RUN   TestRedirectExtraOrdering\n"}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"output","Package":"drissionpage","Test":"TestRedirectExtraOrdering","Output":"--- PASS: TestRedirectExtraOrdering (0.00s)\n"}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"pass","Package":"drissionpage","Test":"TestRedirectExtraOrdering","Elapsed":0}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"run","Package":"drissionpage","Test":"TestReconnectAndRedirect"}
-{"Time":"2026-09-21T16:18:38.9110457+08:00","Action":"output","Package":"drissionpage","Test":"TestReconnectAndRedirect","Output":"=== RUN   TestReconnectAndRedirect\n"}
-{"Time":"2026-09-21T16:18:41.0172167+08:00","Action":"output","Package":"drissionpage","Test":"TestReconnectAndRedirect","Output":"--- PASS: TestReconnectAndRedirect (2.11s)\n"}
-{"Time":"2026-09-21T16:18:41.0172167+08:00","Action":"pass","Package":"drissionpage","Test":"TestReconnectAndRedirect","Elapsed":2.11}
-{"Time":"2026-09-21T16:18:41.0172167+08:00","Action":"run","Package":"drissionpage","Test":"TestDownload"}
-{"Time":"2026-09-21T16:18:41.0172167+08:00","Action":"output","Package":"drissionpage","Test":"TestDownload","Output":"=== RUN   TestDownload\n"}
-{"Time":"2026-09-21T16:18:41.0261619+08:00","Action":"output","Package":"drissionpage","Test":"TestDownload","Output":"--- PASS: TestDownload (0.01s)\n"}
-{"Time":"2026-09-21T16:18:41.0267425+08:00","Action":"pass","Package":"drissionpage","Test":"TestDownload","Elapsed":0.01}
-{"Time":"2026-09-21T16:18:41.0267425+08:00","Action":"run","Package":"drissionpage","Test":"TestSessionRequestBodies"}
-{"Time":"2026-09-21T16:18:41.0267425+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionRequestBodies","Output":"=== RUN   TestSessionRequestBodies\n"}
-{"Time":"2026-09-21T16:18:41.0320555+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionRequestBodies","Output":"--- PASS: TestSessionRequestBodies (0.01s)\n"}
-{"Time":"2026-09-21T16:18:41.0320555+08:00","Action":"pass","Package":"drissionpage","Test":"TestSessionRequestBodies","Elapsed":0.01}
-{"Time":"2026-09-21T16:18:41.0320555+08:00","Action":"run","Package":"drissionpage","Test":"TestBrowserModules"}
-{"Time":"2026-09-21T16:18:41.0320555+08:00","Action":"output","Package":"drissionpage","Test":"TestBrowserModules","Output":"=== RUN   TestBrowserModules\n"}
-{"Time":"2026-09-21T16:18:43.460986+08:00","Action":"output","Package":"drissionpage","Test":"TestBrowserModules","Output":"--- PASS: TestBrowserModules (2.43s)\n"}
-{"Time":"2026-09-21T16:18:43.460986+08:00","Action":"pass","Package":"drissionpage","Test":"TestBrowserModules","Elapsed":2.43}
-{"Time":"2026-09-21T16:18:43.460986+08:00","Action":"run","Package":"drissionpage","Test":"TestSessionRuntimeSettings"}
-{"Time":"2026-09-21T16:18:43.460986+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionRuntimeSettings","Output":"=== RUN   TestSessionRuntimeSettings\n"}
-{"Time":"2026-09-21T16:18:43.4834646+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionRuntimeSettings","Output":"--- PASS: TestSessionRuntimeSettings (0.02s)\n"}
-{"Time":"2026-09-21T16:18:43.4834646+08:00","Action":"pass","Package":"drissionpage","Test":"TestSessionRuntimeSettings","Elapsed":0.02}
-{"Time":"2026-09-21T16:18:43.4834646+08:00","Action":"run","Package":"drissionpage","Test":"TestSessionTransportAndEncoding"}
-{"Time":"2026-09-21T16:18:43.4834646+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionTransportAndEncoding","Output":"=== RUN   TestSessionTransportAndEncoding\n"}
-{"Time":"2026-09-21T16:18:43.5699529+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionTransportAndEncoding","Output":"2026/09/21 16:18:43 http: TLS handshake error from 127.0.0.1:35029: remote error: tls: bad certificate\n"}
-{"Time":"2026-09-21T16:18:43.5699529+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionTransportAndEncoding","Output":"2026/09/21 16:18:43 http: TLS handshake error from 127.0.0.1:35034: remote error: tls: bad certificate\n"}
-{"Time":"2026-09-21T16:18:43.5704891+08:00","Action":"output","Package":"drissionpage","Test":"TestSessionTransportAndEncoding","Output":"--- PASS: TestSessionTransportAndEncoding (0.09s)\n"}
-{"Time":"2026-09-21T16:18:43.5704891+08:00","Action":"pass","Package":"drissionpage","Test":"TestSessionTransportAndEncoding","Elapsed":0.09}
-{"Time":"2026-09-21T16:18:43.5704891+08:00","Action":"output","Package":"drissionpage","Output":"PASS\n"}
-{"Time":"2026-09-21T16:18:43.5764373+08:00","Action":"output","Package":"drissionpage","Output":"ok  \tdrissionpage\t48.795s\n"}
-{"Time":"2026-09-21T16:18:43.5764373+08:00","Action":"pass","Package":"drissionpage","Elapsed":48.795}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"start","Package":"github.com/AIPythoner/DrissionPage-go"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"start","Package":"github.com/AIPythoner/DrissionPage-go/cmd/drissionpage"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go/cmd/drissionpage","Output":"?   \tgithub.com/AIPythoner/DrissionPage-go/cmd/drissionpage\t[no test files]\n"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"skip","Package":"github.com/AIPythoner/DrissionPage-go/cmd/drissionpage","Elapsed":0}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"start","Package":"github.com/AIPythoner/DrissionPage-go/internal/htmlquery"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go/internal/htmlquery","Output":"?   \tgithub.com/AIPythoner/DrissionPage-go/internal/htmlquery\t[no test files]\n"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"skip","Package":"github.com/AIPythoner/DrissionPage-go/internal/htmlquery","Elapsed":0}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"start","Package":"github.com/AIPythoner/DrissionPage-go/internal/rod"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go/internal/rod","Output":"?   \tgithub.com/AIPythoner/DrissionPage-go/internal/rod\t[no test files]\n"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"skip","Package":"github.com/AIPythoner/DrissionPage-go/internal/rod","Elapsed":0}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"start","Package":"github.com/AIPythoner/DrissionPage-go/internal/xpath"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go/internal/xpath","Output":"?   \tgithub.com/AIPythoner/DrissionPage-go/internal/xpath\t[no test files]\n"}
+{"Time":"2026-09-21T17:15:37.4002644+08:00","Action":"skip","Package":"github.com/AIPythoner/DrissionPage-go/internal/xpath","Elapsed":0}
+{"Time":"2026-09-21T17:15:38.4039554+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestINI"}
+{"Time":"2026-09-21T17:15:38.4039554+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestINI","Output":"=== RUN   TestINI\n"}
+{"Time":"2026-09-21T17:15:38.4077248+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestINI","Output":"--- PASS: TestINI (0.00s)\n"}
+{"Time":"2026-09-21T17:15:38.4077248+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestINI","Elapsed":0}
+{"Time":"2026-09-21T17:15:38.4077248+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStreamingAndLifetimes"}
+{"Time":"2026-09-21T17:15:38.4077248+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStreamingAndLifetimes","Output":"=== RUN   TestStreamingAndLifetimes\n"}
+{"Time":"2026-09-21T17:15:40.9723409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStreamingAndLifetimes","Output":"--- PASS: TestStreamingAndLifetimes (2.56s)\n"}
+{"Time":"2026-09-21T17:15:40.9723409+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStreamingAndLifetimes","Elapsed":2.56}
+{"Time":"2026-09-21T17:15:40.9723409+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo"}
+{"Time":"2026-09-21T17:15:40.9723409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo","Output":"=== RUN   TestAsyncHTMLDemo\n"}
+{"Time":"2026-09-21T17:15:41.4261737+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/01_locators_attributes"}
+{"Time":"2026-09-21T17:15:41.4261737+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/01_locators_attributes","Output":"=== RUN   TestAsyncHTMLDemo/01_locators_attributes\n"}
+{"Time":"2026-09-21T17:15:41.9197898+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/01_locators_attributes","Output":"--- PASS: TestAsyncHTMLDemo/01_locators_attributes (0.49s)\n"}
+{"Time":"2026-09-21T17:15:41.9197898+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/01_locators_attributes","Elapsed":0.49}
+{"Time":"2026-09-21T17:15:41.9197898+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/02_forms_select_upload"}
+{"Time":"2026-09-21T17:15:41.9197898+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Output":"=== RUN   TestAsyncHTMLDemo/02_forms_select_upload\n"}
+{"Time":"2026-09-21T17:15:42.5389921+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Output":"--- PASS: TestAsyncHTMLDemo/02_forms_select_upload (0.62s)\n"}
+{"Time":"2026-09-21T17:15:42.5389921+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/02_forms_select_upload","Elapsed":0.62}
+{"Time":"2026-09-21T17:15:42.5389921+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/03_click_events"}
+{"Time":"2026-09-21T17:15:42.5389921+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/03_click_events","Output":"=== RUN   TestAsyncHTMLDemo/03_click_events\n"}
+{"Time":"2026-09-21T17:15:44.3154374+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/03_click_events","Output":"--- PASS: TestAsyncHTMLDemo/03_click_events (1.78s)\n"}
+{"Time":"2026-09-21T17:15:44.3159694+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/03_click_events","Elapsed":1.78}
+{"Time":"2026-09-21T17:15:44.3159694+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel"}
+{"Time":"2026-09-21T17:15:44.3159694+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Output":"=== RUN   TestAsyncHTMLDemo/04_drag_mouse_wheel\n"}
+{"Time":"2026-09-21T17:15:44.9264866+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Output":"--- PASS: TestAsyncHTMLDemo/04_drag_mouse_wheel (0.61s)\n"}
+{"Time":"2026-09-21T17:15:44.9264866+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/04_drag_mouse_wheel","Elapsed":0.61}
+{"Time":"2026-09-21T17:15:44.9264866+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/05_keyboard_actions"}
+{"Time":"2026-09-21T17:15:44.9264866+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Output":"=== RUN   TestAsyncHTMLDemo/05_keyboard_actions\n"}
+{"Time":"2026-09-21T17:15:45.3288772+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Output":"--- PASS: TestAsyncHTMLDemo/05_keyboard_actions (0.40s)\n"}
+{"Time":"2026-09-21T17:15:45.3288772+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/05_keyboard_actions","Elapsed":0.4}
+{"Time":"2026-09-21T17:15:45.3288772+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/06_dynamic_waits"}
+{"Time":"2026-09-21T17:15:45.3288772+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Output":"=== RUN   TestAsyncHTMLDemo/06_dynamic_waits\n"}
+{"Time":"2026-09-21T17:15:52.4791373+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Output":"--- PASS: TestAsyncHTMLDemo/06_dynamic_waits (7.15s)\n"}
+{"Time":"2026-09-21T17:15:52.4791373+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/06_dynamic_waits","Elapsed":7.15}
+{"Time":"2026-09-21T17:15:52.4791373+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/07_scroll"}
+{"Time":"2026-09-21T17:15:52.4791373+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/07_scroll","Output":"=== RUN   TestAsyncHTMLDemo/07_scroll\n"}
+{"Time":"2026-09-21T17:15:52.8146018+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/07_scroll","Output":"--- PASS: TestAsyncHTMLDemo/07_scroll (0.34s)\n"}
+{"Time":"2026-09-21T17:15:52.8146018+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/07_scroll","Elapsed":0.34}
+{"Time":"2026-09-21T17:15:52.8146018+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc"}
+{"Time":"2026-09-21T17:15:52.8146018+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Output":"=== RUN   TestAsyncHTMLDemo/08_frames_nested_srcdoc\n"}
+{"Time":"2026-09-21T17:15:53.2648081+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Output":"--- PASS: TestAsyncHTMLDemo/08_frames_nested_srcdoc (0.45s)\n"}
+{"Time":"2026-09-21T17:15:53.2648081+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/08_frames_nested_srcdoc","Elapsed":0.45}
+{"Time":"2026-09-21T17:15:53.2648081+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/09_shadow"}
+{"Time":"2026-09-21T17:15:53.2648081+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/09_shadow","Output":"=== RUN   TestAsyncHTMLDemo/09_shadow\n"}
+{"Time":"2026-09-21T17:15:53.6350231+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/09_shadow","Output":"--- PASS: TestAsyncHTMLDemo/09_shadow (0.37s)\n"}
+{"Time":"2026-09-21T17:15:53.6350231+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/09_shadow","Elapsed":0.37}
+{"Time":"2026-09-21T17:15:53.6350231+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/10_dialogs"}
+{"Time":"2026-09-21T17:15:53.6350231+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/10_dialogs","Output":"=== RUN   TestAsyncHTMLDemo/10_dialogs\n"}
+{"Time":"2026-09-21T17:15:54.0349926+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/10_dialogs","Output":"--- PASS: TestAsyncHTMLDemo/10_dialogs (0.40s)\n"}
+{"Time":"2026-09-21T17:15:54.0349926+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/10_dialogs","Elapsed":0.4}
+{"Time":"2026-09-21T17:15:54.0349926+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/11_network"}
+{"Time":"2026-09-21T17:15:54.0349926+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/11_network","Output":"=== RUN   TestAsyncHTMLDemo/11_network\n"}
+{"Time":"2026-09-21T17:15:56.5931719+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/11_network","Output":"--- PASS: TestAsyncHTMLDemo/11_network (2.56s)\n"}
+{"Time":"2026-09-21T17:15:56.5931719+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/11_network","Elapsed":2.56}
+{"Time":"2026-09-21T17:15:56.5931719+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/12_navigation"}
+{"Time":"2026-09-21T17:15:56.5931719+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/12_navigation","Output":"=== RUN   TestAsyncHTMLDemo/12_navigation\n"}
+{"Time":"2026-09-21T17:16:02.185929+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/12_navigation","Output":"--- PASS: TestAsyncHTMLDemo/12_navigation (5.59s)\n"}
+{"Time":"2026-09-21T17:16:02.185929+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/12_navigation","Elapsed":5.59}
+{"Time":"2026-09-21T17:16:02.185929+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/13_download"}
+{"Time":"2026-09-21T17:16:02.185929+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/13_download","Output":"=== RUN   TestAsyncHTMLDemo/13_download\n"}
+{"Time":"2026-09-21T17:16:02.6638419+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/13_download","Output":"--- PASS: TestAsyncHTMLDemo/13_download (0.48s)\n"}
+{"Time":"2026-09-21T17:16:02.6638419+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/13_download","Elapsed":0.48}
+{"Time":"2026-09-21T17:16:02.6638419+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/14_console"}
+{"Time":"2026-09-21T17:16:02.6638419+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/14_console","Output":"=== RUN   TestAsyncHTMLDemo/14_console\n"}
+{"Time":"2026-09-21T17:16:03.0622238+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/14_console","Output":"--- PASS: TestAsyncHTMLDemo/14_console (0.40s)\n"}
+{"Time":"2026-09-21T17:16:03.0622238+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/14_console","Elapsed":0.4}
+{"Time":"2026-09-21T17:16:03.0622238+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/15_relations_geometry"}
+{"Time":"2026-09-21T17:16:03.0622238+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/15_relations_geometry","Output":"=== RUN   TestAsyncHTMLDemo/15_relations_geometry\n"}
+{"Time":"2026-09-21T17:16:03.4426934+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/15_relations_geometry","Output":"--- PASS: TestAsyncHTMLDemo/15_relations_geometry (0.38s)\n"}
+{"Time":"2026-09-21T17:16:03.4426934+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/15_relations_geometry","Elapsed":0.38}
+{"Time":"2026-09-21T17:16:03.4426934+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot"}
+{"Time":"2026-09-21T17:16:03.4426934+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Output":"=== RUN   TestAsyncHTMLDemo/16_storage_image_screenshot\n"}
+{"Time":"2026-09-21T17:16:03.8458289+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Output":"--- PASS: TestAsyncHTMLDemo/16_storage_image_screenshot (0.40s)\n"}
+{"Time":"2026-09-21T17:16:03.8458289+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/16_storage_image_screenshot","Elapsed":0.4}
+{"Time":"2026-09-21T17:16:03.8458289+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/17_nested_lookup"}
+{"Time":"2026-09-21T17:16:03.8458289+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/17_nested_lookup","Output":"=== RUN   TestAsyncHTMLDemo/17_nested_lookup\n"}
+{"Time":"2026-09-21T17:16:04.2105811+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/17_nested_lookup","Output":"--- PASS: TestAsyncHTMLDemo/17_nested_lookup (0.36s)\n"}
+{"Time":"2026-09-21T17:16:04.2105811+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/17_nested_lookup","Elapsed":0.36}
+{"Time":"2026-09-21T17:16:04.2105811+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency"}
+{"Time":"2026-09-21T17:16:04.2105811+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Output":"=== RUN   TestAsyncHTMLDemo/18_session_hybrid_concurrency\n"}
+{"Time":"2026-09-21T17:16:04.6013295+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Output":"--- PASS: TestAsyncHTMLDemo/18_session_hybrid_concurrency (0.39s)\n"}
+{"Time":"2026-09-21T17:16:04.6013295+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo/18_session_hybrid_concurrency","Elapsed":0.39}
+{"Time":"2026-09-21T17:16:05.7310265+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo","Output":"--- PASS: TestAsyncHTMLDemo (24.76s)\n"}
+{"Time":"2026-09-21T17:16:05.7310265+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestAsyncHTMLDemo","Elapsed":24.76}
+{"Time":"2026-09-21T17:16:05.7310265+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestTextAndRelations"}
+{"Time":"2026-09-21T17:16:05.7310265+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestTextAndRelations","Output":"=== RUN   TestTextAndRelations\n"}
+{"Time":"2026-09-21T17:16:05.7315438+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestTextAndRelations","Output":"--- PASS: TestTextAndRelations (0.00s)\n"}
+{"Time":"2026-09-21T17:16:05.7315438+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestTextAndRelations","Elapsed":0}
+{"Time":"2026-09-21T17:16:05.7315438+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestHybridAndAdvanced"}
+{"Time":"2026-09-21T17:16:05.7315438+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestHybridAndAdvanced","Output":"=== RUN   TestHybridAndAdvanced\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestHybridAndAdvanced","Output":"--- PASS: TestHybridAndAdvanced (2.19s)\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestHybridAndAdvanced","Elapsed":2.19}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators","Output":"=== RUN   TestStaticLocators\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/#link"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/#link","Output":"=== RUN   TestStaticLocators/#link\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/#link","Output":"--- PASS: TestStaticLocators/#link (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/#link","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/css:li[data-n='2']"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/css:li[data-n='2']","Output":"=== RUN   TestStaticLocators/css:li[data-n='2']\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/css:li[data-n='2']","Output":"--- PASS: TestStaticLocators/css:li[data-n='2'] (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/css:li[data-n='2']","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/xpath://li[1]"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/xpath://li[1]","Output":"=== RUN   TestStaticLocators/xpath://li[1]\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/xpath://li[1]","Output":"--- PASS: TestStaticLocators/xpath://li[1] (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/xpath://li[1]","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/@id=link"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/@id=link","Output":"=== RUN   TestStaticLocators/@id=link\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/@id=link","Output":"--- PASS: TestStaticLocators/@id=link (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/@id=link","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2"}
+{"Time":"2026-09-21T17:16:07.9203293+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Output":"=== RUN   TestStaticLocators/tag:li@@class=item@@data-n=2\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Output":"--- PASS: TestStaticLocators/tag:li@@class=item@@data-n=2 (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/tag:li@@class=item@@data-n=2","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text^你好"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text^你好","Output":"=== RUN   TestStaticLocators/text^你好\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text^你好","Output":"--- PASS: TestStaticLocators/text^你好 (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text^你好","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text=one"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text=one","Output":"=== RUN   TestStaticLocators/text=one\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text=one","Output":"--- PASS: TestStaticLocators/text=one (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/text=one","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/{id_link}"}
+{"Time":"2026-09-21T17:16:07.9208938+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/{id_link}","Output":"=== RUN   TestStaticLocators/{id_link}\n"}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/{id_link}","Output":"--- PASS: TestStaticLocators/{id_link} (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators/{id_link}","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators","Output":"--- PASS: TestStaticLocators (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestStaticLocators","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSession"}
+{"Time":"2026-09-21T17:16:07.9214245+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSession","Output":"=== RUN   TestSession\n"}
+{"Time":"2026-09-21T17:16:07.9250992+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSession","Output":"--- PASS: TestSession (0.00s)\n"}
+{"Time":"2026-09-21T17:16:07.9250992+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSession","Elapsed":0}
+{"Time":"2026-09-21T17:16:07.9250992+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowser"}
+{"Time":"2026-09-21T17:16:07.9250992+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowser","Output":"=== RUN   TestBrowser\n"}
+{"Time":"2026-09-21T17:16:10.3336559+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowser","Output":"--- PASS: TestBrowser (2.41s)\n"}
+{"Time":"2026-09-21T17:16:10.3341729+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowser","Elapsed":2.41}
+{"Time":"2026-09-21T17:16:10.3341729+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestProfilePreparation"}
+{"Time":"2026-09-21T17:16:10.3341729+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestProfilePreparation","Output":"=== RUN   TestProfilePreparation\n"}
+{"Time":"2026-09-21T17:16:10.3551812+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestProfilePreparation","Output":"--- PASS: TestProfilePreparation (0.02s)\n"}
+{"Time":"2026-09-21T17:16:10.3551812+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestProfilePreparation","Elapsed":0.02}
+{"Time":"2026-09-21T17:16:10.3551812+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionHooksAndAdapters"}
+{"Time":"2026-09-21T17:16:10.3551812+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionHooksAndAdapters","Output":"=== RUN   TestSessionHooksAndAdapters\n"}
+{"Time":"2026-09-21T17:16:10.3568706+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionHooksAndAdapters","Output":"--- PASS: TestSessionHooksAndAdapters (0.00s)\n"}
+{"Time":"2026-09-21T17:16:10.3568706+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionHooksAndAdapters","Elapsed":0}
+{"Time":"2026-09-21T17:16:10.3568706+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRecordingWaitersAndNativeWindow"}
+{"Time":"2026-09-21T17:16:10.3568706+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRecordingWaitersAndNativeWindow","Output":"=== RUN   TestRecordingWaitersAndNativeWindow\n"}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRecordingWaitersAndNativeWindow","Output":"--- PASS: TestRecordingWaitersAndNativeWindow (5.59s)\n"}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRecordingWaitersAndNativeWindow","Elapsed":5.59}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies"}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies","Output":"=== RUN   TestDownloadFilenamePolicies\n"}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/rename"}
+{"Time":"2026-09-21T17:16:15.9501193+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/rename","Output":"=== RUN   TestDownloadFilenamePolicies/rename\n"}
+{"Time":"2026-09-21T17:16:15.9544086+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/rename","Output":"--- PASS: TestDownloadFilenamePolicies/rename (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9544086+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/rename","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9544086+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/overwrite"}
+{"Time":"2026-09-21T17:16:15.9544086+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/overwrite","Output":"=== RUN   TestDownloadFilenamePolicies/overwrite\n"}
+{"Time":"2026-09-21T17:16:15.9585746+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/overwrite","Output":"--- PASS: TestDownloadFilenamePolicies/overwrite (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9585746+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/overwrite","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9585746+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/skip"}
+{"Time":"2026-09-21T17:16:15.9585746+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/skip","Output":"=== RUN   TestDownloadFilenamePolicies/skip\n"}
+{"Time":"2026-09-21T17:16:15.9616909+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/skip","Output":"--- PASS: TestDownloadFilenamePolicies/skip (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9616909+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/skip","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9616909+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/error"}
+{"Time":"2026-09-21T17:16:15.9616909+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/error","Output":"=== RUN   TestDownloadFilenamePolicies/error\n"}
+{"Time":"2026-09-21T17:16:15.9653193+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/error","Output":"--- PASS: TestDownloadFilenamePolicies/error (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9653193+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies/error","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies","Output":"--- PASS: TestDownloadFilenamePolicies (0.02s)\n"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownloadFilenamePolicies","Elapsed":0.02}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestCookieMetadataAndDeletion"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestCookieMetadataAndDeletion","Output":"=== RUN   TestCookieMetadataAndDeletion\n"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestCookieMetadataAndDeletion","Output":"--- PASS: TestCookieMetadataAndDeletion (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestCookieMetadataAndDeletion","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBoundedQueue"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBoundedQueue","Output":"=== RUN   TestBoundedQueue\n"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBoundedQueue","Output":"--- PASS: TestBoundedQueue (0.00s)\n"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBoundedQueue","Elapsed":0}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFrameRebindingAndFileDrop"}
+{"Time":"2026-09-21T17:16:15.9684338+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFrameRebindingAndFileDrop","Output":"=== RUN   TestFrameRebindingAndFileDrop\n"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFrameRebindingAndFileDrop","Output":"--- PASS: TestFrameRebindingAndFileDrop (1.83s)\n"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFrameRebindingAndFileDrop","Elapsed":1.83}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRedirectExtraOrdering"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRedirectExtraOrdering","Output":"=== RUN   TestRedirectExtraOrdering\n"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRedirectExtraOrdering","Output":"--- PASS: TestRedirectExtraOrdering (0.00s)\n"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestRedirectExtraOrdering","Elapsed":0}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestReconnectAndRedirect"}
+{"Time":"2026-09-21T17:16:17.795416+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestReconnectAndRedirect","Output":"=== RUN   TestReconnectAndRedirect\n"}
+{"Time":"2026-09-21T17:16:19.504794+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestReconnectAndRedirect","Output":"--- PASS: TestReconnectAndRedirect (1.71s)\n"}
+{"Time":"2026-09-21T17:16:19.504794+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestReconnectAndRedirect","Elapsed":1.71}
+{"Time":"2026-09-21T17:16:19.504794+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownload"}
+{"Time":"2026-09-21T17:16:19.504794+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownload","Output":"=== RUN   TestDownload\n"}
+{"Time":"2026-09-21T17:16:19.5175307+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownload","Output":"--- PASS: TestDownload (0.01s)\n"}
+{"Time":"2026-09-21T17:16:19.5181791+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestDownload","Elapsed":0.01}
+{"Time":"2026-09-21T17:16:19.5181791+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRequestBodies"}
+{"Time":"2026-09-21T17:16:19.5181791+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRequestBodies","Output":"=== RUN   TestSessionRequestBodies\n"}
+{"Time":"2026-09-21T17:16:19.5239044+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRequestBodies","Output":"--- PASS: TestSessionRequestBodies (0.01s)\n"}
+{"Time":"2026-09-21T17:16:19.5239044+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRequestBodies","Elapsed":0.01}
+{"Time":"2026-09-21T17:16:19.5239044+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowserModules"}
+{"Time":"2026-09-21T17:16:19.5239044+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowserModules","Output":"=== RUN   TestBrowserModules\n"}
+{"Time":"2026-09-21T17:16:22.1578155+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowserModules","Output":"--- PASS: TestBrowserModules (2.63s)\n"}
+{"Time":"2026-09-21T17:16:22.1578155+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestBrowserModules","Elapsed":2.63}
+{"Time":"2026-09-21T17:16:22.1578155+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference"}
+{"Time":"2026-09-21T17:16:22.1578155+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference","Output":"=== RUN   TestPythonStaticReference\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#a"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#a","Output":"=== RUN   TestPythonStaticReference/#a\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#a","Output":"--- PASS: TestPythonStaticReference/#a (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#a","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/.item"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/.item","Output":"=== RUN   TestPythonStaticReference/.item\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/.item","Output":"--- PASS: TestPythonStaticReference/.item (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/.item","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p","Output":"=== RUN   TestPythonStaticReference/tag:p\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p","Output":"--- PASS: TestPythonStaticReference/tag:p (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/t:p"}
+{"Time":"2026-09-21T17:16:22.1583409+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/t:p","Output":"=== RUN   TestPythonStaticReference/t:p\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/t:p","Output":"--- PASS: TestPythonStaticReference/t:p (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/t:p","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@id=a"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@id=a","Output":"=== RUN   TestPythonStaticReference/@id=a\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@id=a","Output":"--- PASS: TestPythonStaticReference/@id=a (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@id=a","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind","Output":"=== RUN   TestPythonStaticReference/@data-kind\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind","Output":"--- PASS: TestPythonStaticReference/@data-kind (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind=alpha"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind=alpha","Output":"=== RUN   TestPythonStaticReference/@data-kind=alpha\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind=alpha","Output":"--- PASS: TestPythonStaticReference/@data-kind=alpha (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind=alpha","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind:alpha"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind:alpha","Output":"=== RUN   TestPythonStaticReference/@data-kind:alpha\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind:alpha","Output":"--- PASS: TestPythonStaticReference/@data-kind:alpha (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind:alpha","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind^alpha"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind^alpha","Output":"=== RUN   TestPythonStaticReference/@data-kind^alpha\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind^alpha","Output":"--- PASS: TestPythonStaticReference/@data-kind^alpha (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind^alpha","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind$bet"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind$bet","Output":"=== RUN   TestPythonStaticReference/@data-kind$bet\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind$bet","Output":"--- PASS: TestPythonStaticReference/@data-kind$bet (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@data-kind$bet","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p@@class:item@!id=b"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p@@class:item@!id=b","Output":"=== RUN   TestPythonStaticReference/tag:p@@class:item@!id=b\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p@@class:item@!id=b","Output":"--- PASS: TestPythonStaticReference/tag:p@@class:item@!id=b (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:p@@class:item@!id=b","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@|id=a@|id=c"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@|id=a@|id=c","Output":"=== RUN   TestPythonStaticReference/@|id=a@|id=c\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@|id=a@|id=c","Output":"--- PASS: TestPythonStaticReference/@|id=a@|id=c (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@|id=a@|id=c","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text=hello_again"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text=hello_again","Output":"=== RUN   TestPythonStaticReference/text=hello_again\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text=hello_again","Output":"--- PASS: TestPythonStaticReference/text=hello_again (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text=hello_again","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text:hello"}
+{"Time":"2026-09-21T17:16:22.1588583+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text:hello","Output":"=== RUN   TestPythonStaticReference/text:hello\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text:hello","Output":"--- PASS: TestPythonStaticReference/text:hello (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text:hello","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text^hello"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text^hello","Output":"=== RUN   TestPythonStaticReference/text^hello\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text^hello","Output":"--- PASS: TestPythonStaticReference/text^hello (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text^hello","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text$结尾"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text$结尾","Output":"=== RUN   TestPythonStaticReference/text$结尾\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text$结尾","Output":"--- PASS: TestPythonStaticReference/text$结尾 (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text$结尾","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:input@!disabled"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:input@!disabled","Output":"=== RUN   TestPythonStaticReference/tag:input@!disabled\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:input@!disabled","Output":"--- PASS: TestPythonStaticReference/tag:input@!disabled (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/tag:input@!disabled","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://p[2]"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://p[2]","Output":"=== RUN   TestPythonStaticReference/xpath://p[2]\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://p[2]","Output":"--- PASS: TestPythonStaticReference/xpath://p[2] (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://p[2]","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/css:main_\u003e_p.item"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/css:main_\u003e_p.item","Output":"=== RUN   TestPythonStaticReference/css:main_\u003e_p.item\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/css:main_\u003e_p.item","Output":"--- PASS: TestPythonStaticReference/css:main_\u003e_p.item (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/css:main_\u003e_p.item","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@title=a'\"b"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@title=a'\"b","Output":"=== RUN   TestPythonStaticReference/@title=a'\"b\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@title=a'\"b","Output":"--- PASS: TestPythonStaticReference/@title=a'\"b (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/@title=a'\"b","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://div[@id=\"empty\"]"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://div[@id=\"empty\"]","Output":"=== RUN   TestPythonStaticReference/xpath://div[@id=\"empty\"]\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://div[@id=\"empty\"]","Output":"--- PASS: TestPythonStaticReference/xpath://div[@id=\"empty\"] (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/xpath://div[@id=\"empty\"]","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#missing"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#missing","Output":"=== RUN   TestPythonStaticReference/#missing\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#missing","Output":"--- PASS: TestPythonStaticReference/#missing (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/#missing","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_a"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_a","Output":"=== RUN   TestPythonStaticReference/text_a\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_a","Output":"--- PASS: TestPythonStaticReference/text_a (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_a","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_b"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_b","Output":"=== RUN   TestPythonStaticReference/text_b\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_b","Output":"--- PASS: TestPythonStaticReference/text_b (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_b","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_c"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_c","Output":"=== RUN   TestPythonStaticReference/text_c\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_c","Output":"--- PASS: TestPythonStaticReference/text_c (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_c","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_blocks"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_blocks","Output":"=== RUN   TestPythonStaticReference/text_blocks\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_blocks","Output":"--- PASS: TestPythonStaticReference/text_blocks (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_blocks","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_pre"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_pre","Output":"=== RUN   TestPythonStaticReference/text_pre\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_pre","Output":"--- PASS: TestPythonStaticReference/text_pre (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_pre","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_table"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_table","Output":"=== RUN   TestPythonStaticReference/text_table\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_table","Output":"--- PASS: TestPythonStaticReference/text_table (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_table","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_space"}
+{"Time":"2026-09-21T17:16:22.1593744+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_space","Output":"=== RUN   TestPythonStaticReference/text_space\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_space","Output":"--- PASS: TestPythonStaticReference/text_space (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_space","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_hidden"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_hidden","Output":"=== RUN   TestPythonStaticReference/text_hidden\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_hidden","Output":"--- PASS: TestPythonStaticReference/text_hidden (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_hidden","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_empty"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_empty","Output":"=== RUN   TestPythonStaticReference/text_empty\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_empty","Output":"--- PASS: TestPythonStaticReference/text_empty (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/text_empty","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/string-length('中文🙂')"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/string-length('中文🙂')","Output":"=== RUN   TestPythonStaticReference/string-length('中文🙂')\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/string-length('中文🙂')","Output":"--- PASS: TestPythonStaticReference/string-length('中文🙂') (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/string-length('中文🙂')","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('甲乙丙丁',_2,_2)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('甲乙丙丁',_2,_2)","Output":"=== RUN   TestPythonStaticReference/substring('甲乙丙丁',_2,_2)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('甲乙丙丁',_2,_2)","Output":"--- PASS: TestPythonStaticReference/substring('甲乙丙丁',_2,_2) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('甲乙丙丁',_2,_2)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0,_3)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0,_3)","Output":"=== RUN   TestPythonStaticReference/substring('12345',_0,_3)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0,_3)","Output":"--- PASS: TestPythonStaticReference/substring('12345',_0,_3) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0,_3)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_-2,_4)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_-2,_4)","Output":"=== RUN   TestPythonStaticReference/substring('12345',_-2,_4)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_-2,_4)","Output":"--- PASS: TestPythonStaticReference/substring('12345',_-2,_4) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_-2,_4)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_1.5,_2.6)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_1.5,_2.6)","Output":"=== RUN   TestPythonStaticReference/substring('12345',_1.5,_2.6)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_1.5,_2.6)","Output":"--- PASS: TestPythonStaticReference/substring('12345',_1.5,_2.6) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_1.5,_2.6)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0_div_0,_3)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0_div_0,_3)","Output":"=== RUN   TestPythonStaticReference/substring('12345',_0_div_0,_3)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0_div_0,_3)","Output":"--- PASS: TestPythonStaticReference/substring('12345',_0_div_0,_3) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/substring('12345',_0_div_0,_3)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB')"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB')","Output":"=== RUN   TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB')\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB')","Output":"--- PASS: TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB') (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('甲乙甲丙',_'甲乙',_'AB')","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('aba',_'aa',_'XY')"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('aba',_'aa',_'XY')","Output":"=== RUN   TestPythonStaticReference/translate('aba',_'aa',_'XY')\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('aba',_'aa',_'XY')","Output":"--- PASS: TestPythonStaticReference/translate('aba',_'aa',_'XY') (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/translate('aba',_'aa',_'XY')","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/count(//p)"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/count(//p)","Output":"=== RUN   TestPythonStaticReference/count(//p)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/count(//p)","Output":"--- PASS: TestPythonStaticReference/count(//p) (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference/count(//p)","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference","Output":"--- PASS: TestPythonStaticReference (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestPythonStaticReference","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestOpenStream"}
+{"Time":"2026-09-21T17:16:22.159889+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestOpenStream","Output":"=== RUN   TestOpenStream\n"}
+{"Time":"2026-09-21T17:16:22.1609308+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestOpenStream","Output":"--- PASS: TestOpenStream (0.00s)\n"}
+{"Time":"2026-09-21T17:16:22.1609308+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestOpenStream","Elapsed":0}
+{"Time":"2026-09-21T17:16:22.1609308+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFramesHandlesSelectorsAndCapacity"}
+{"Time":"2026-09-21T17:16:22.1609308+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFramesHandlesSelectorsAndCapacity","Output":"=== RUN   TestFramesHandlesSelectorsAndCapacity\n"}
+{"Time":"2026-09-21T17:16:24.3720332+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFramesHandlesSelectorsAndCapacity","Output":"--- PASS: TestFramesHandlesSelectorsAndCapacity (2.21s)\n"}
+{"Time":"2026-09-21T17:16:24.3720332+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestFramesHandlesSelectorsAndCapacity","Elapsed":2.21}
+{"Time":"2026-09-21T17:16:24.3720332+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRuntimeSettings"}
+{"Time":"2026-09-21T17:16:24.3720332+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRuntimeSettings","Output":"=== RUN   TestSessionRuntimeSettings\n"}
+{"Time":"2026-09-21T17:16:24.394984+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRuntimeSettings","Output":"--- PASS: TestSessionRuntimeSettings (0.02s)\n"}
+{"Time":"2026-09-21T17:16:24.394984+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionRuntimeSettings","Elapsed":0.02}
+{"Time":"2026-09-21T17:16:24.394984+08:00","Action":"run","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding"}
+{"Time":"2026-09-21T17:16:24.394984+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding","Output":"=== RUN   TestSessionTransportAndEncoding\n"}
+{"Time":"2026-09-21T17:16:24.4793751+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding","Output":"2026/09/21 17:16:24 http: TLS handshake error from 127.0.0.1:27558: remote error: tls: bad certificate\n"}
+{"Time":"2026-09-21T17:16:24.4793751+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding","Output":"2026/09/21 17:16:24 http: TLS handshake error from 127.0.0.1:27561: remote error: tls: bad certificate\n"}
+{"Time":"2026-09-21T17:16:24.4800721+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding","Output":"--- PASS: TestSessionTransportAndEncoding (0.09s)\n"}
+{"Time":"2026-09-21T17:16:24.4800721+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Test":"TestSessionTransportAndEncoding","Elapsed":0.09}
+{"Time":"2026-09-21T17:16:24.4800721+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Output":"PASS\n"}
+{"Time":"2026-09-21T17:16:24.4888632+08:00","Action":"output","Package":"github.com/AIPythoner/DrissionPage-go","Output":"ok  \tgithub.com/AIPythoner/DrissionPage-go\t47.089s\n"}
+{"Time":"2026-09-21T17:16:24.4893674+08:00","Action":"pass","Package":"github.com/AIPythoner/DrissionPage-go","Elapsed":47.089}

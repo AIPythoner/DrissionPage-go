@@ -13,7 +13,7 @@ func (b *Chromium) Disconnect() error {
 	if b.closed {
 		return ErrClosed
 	}
-	if b.endpoint == "" {
+	if b.endpoint == "" || b.connectionCancel == nil {
 		return fmt.Errorf("disconnect the root browser, not an isolated context")
 	}
 	b.connectionCancel()
@@ -27,7 +27,7 @@ func (b *Chromium) Reconnect(ctx context.Context) error {
 	if b.closed {
 		return ErrClosed
 	}
-	if b.endpoint == "" {
+	if b.endpoint == "" || b.connectionCancel == nil {
 		return fmt.Errorf("reconnect the root browser, not an isolated context")
 	}
 	life, cancel := context.WithCancel(ctx)

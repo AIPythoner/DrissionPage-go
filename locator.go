@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/AIPythoner/DrissionPage-go/internal/xpath"
 	"github.com/andybalholm/cascadia"
-	"github.com/antchfx/xpath"
 )
 
 type Locator struct {

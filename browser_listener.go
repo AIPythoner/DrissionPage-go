@@ -50,13 +50,14 @@ type BrowserListener struct {
 	children   map[string]*Listener
 	paused     atomic.Bool
 	once       sync.Once
+	filter     ListenFilter
 }
 
 // Listen aggregates tabs. NewTab installs capture before navigating. Tabs opened
 // by external clients are subscribed when their target-created event arrives.
 func (b *Chromium) Listen(ctx context.Context, filter ListenFilter) (*BrowserListener, error) {
 	life, cancel := context.WithCancel(ctx)
-	l := &BrowserListener{packets: newEventQueue[*DataPacket](), streams: newEventQueue[*StreamMessage](), errs: newEventQueue[error](), cancel: cancel, children: map[string]*Listener{}}
+	l := &BrowserListener{packets: newEventQueue[*DataPacket](), streams: newEventQueue[*StreamMessage](), errs: newEventQueue[error](), cancel: cancel, children: map[string]*Listener{}, filter: cloneListenFilter(filter)}
 	l.packets.setLimit(filter.BufferSize)
 	l.streams.setLimit(filter.BufferSize)
 	l.errs.setLimit(filter.BufferSize)
@@ -72,7 +73,7 @@ func (b *Chromium) Listen(ctx context.Context, filter ListenFilter) (*BrowserLis
 		if _, ok := l.children[t.ID()]; ok {
 			return
 		}
-		child, e := t.Listen(life, filter)
+		child, e := t.Listen(life, l.filter)
 		if e != nil {
 			l.errs.push(e)
 			return
@@ -85,6 +86,9 @@ func (b *Chromium) Listen(ctx context.Context, filter ListenFilter) (*BrowserLis
 			for {
 				p, e := child.Next(life)
 				if e != nil {
+					if child.Err() != nil {
+						l.errs.push(child.Err())
+					}
 					return
 				}
 				p.TabID = t.ID()
@@ -200,4 +204,20 @@ func (l *BrowserListener) WaitSilent(ctx context.Context, quiet time.Duration) e
 			return e
 		}
 	}
+}
+
+// SetFilter applies future-request matching to current and subsequently added tabs.
+func (l *BrowserListener) SetFilter(filter ListenFilter) error {
+	if _, err := compileNetworkFilter(filter); err != nil {
+		return err
+	}
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	for _, child := range l.children {
+		if err := child.SetFilter(filter); err != nil {
+			return err
+		}
+	}
+	l.filter = cloneListenFilter(filter)
+	return nil
 }

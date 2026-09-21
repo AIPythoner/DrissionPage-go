@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"path/filepath"
 	"strings"
 	"sync"
 	"time"
@@ -17,20 +18,29 @@ import (
 )
 
 type ChromiumOptions struct {
-	BrowserPath     string
-	Address         string
-	UserDataPath    string
-	Headless        bool
-	Arguments       []string
-	Proxy           string
-	Preferences     map[string]any
-	Timeout         time.Duration
-	PageLoadTimeout time.Duration
-	ScriptTimeout   time.Duration
-	Extensions      []string
-	RetryTimes      int
-	RetryInterval   time.Duration
-	LoadMode        string
+	BrowserPath                 string
+	Address                     string
+	UserDataPath                string
+	Headless                    bool
+	Arguments                   []string
+	Proxy                       string
+	Preferences                 map[string]any
+	Timeout                     time.Duration
+	PageLoadTimeout             time.Duration
+	ScriptTimeout               time.Duration
+	Extensions                  []string
+	RetryTimes                  int
+	RetryInterval               time.Duration
+	LoadMode                    string
+	Flags                       map[string]any
+	ClearFileFlags              bool
+	DeletePreferences           []string
+	TempPath                    string
+	DownloadPath                string
+	SystemProfilePath           string
+	NewEnvironment              bool
+	ExistingOnly                bool
+	UseAutoPort, SystemUserPath bool
 }
 
 func NewChromiumOptions() *ChromiumOptions {
@@ -101,6 +111,20 @@ func NewChromium(ctx context.Context, options ...*ChromiumOptions) (*Chromium, e
 	if len(options) > 0 && options[0] != nil {
 		o = *options[0]
 	}
+	o.Arguments = append([]string(nil), o.Arguments...)
+	o.Extensions = append([]string(nil), o.Extensions...)
+	o.DeletePreferences = append([]string(nil), o.DeletePreferences...)
+	if o.Preferences != nil {
+		data, err := json.Marshal(o.Preferences)
+		if err != nil {
+			return nil, err
+		}
+		var copy map[string]any
+		if err = json.Unmarshal(data, &copy); err != nil {
+			return nil, err
+		}
+		o.Preferences = copy
+	}
 	if o.Timeout <= 0 {
 		o.Timeout = 30 * time.Second
 	}
@@ -119,20 +143,63 @@ func NewChromium(ctx context.Context, options ...*ChromiumOptions) (*Chromium, e
 	if o.LoadMode != "normal" && o.LoadMode != "eager" && o.LoadMode != "none" {
 		return nil, fmt.Errorf("invalid load mode %q", o.LoadMode)
 	}
+	if o.UseAutoPort {
+		o.Address = ""
+	}
+	if o.SystemUserPath && o.SystemProfilePath == "" {
+		var err error
+		o.SystemProfilePath, err = systemProfilePath(o.BrowserPath)
+		if err != nil {
+			return nil, err
+		}
+	}
+	if o.ExistingOnly && o.Address == "" {
+		return nil, fmt.Errorf("existing-only mode requires a CDP address")
+	}
 	lifetime, cancel := context.WithCancel(ctx)
 	b := &Chromium{options: o, cancel: cancel, owned: o.Address == "", hooks: newBrowserHooks()}
 	address := o.Address
 	if address == "" {
-		bin := o.BrowserPath
-		if bin == "" {
-			var ok bool
-			bin, ok = launcher.LookPath()
-			if !ok {
-				cancel()
-				return nil, fmt.Errorf("Chromium not found; set BrowserPath")
-			}
+		bin, err := browserExecutable(o.BrowserPath)
+		if err != nil {
+			cancel()
+			return nil, err
 		}
 		l := launcher.New().Context(lifetime).Bin(bin).Headless(o.Headless)
+		if o.NewEnvironment {
+			o.UserDataPath = ""
+		} else if o.UserDataPath == "" {
+			for _, arg := range o.Arguments {
+				if strings.HasPrefix(arg, "--user-data-dir=") {
+					o.UserDataPath = strings.TrimPrefix(arg, "--user-data-dir=")
+				}
+			}
+		}
+		if o.DownloadPath != "" {
+			path, e := filepath.Abs(o.DownloadPath)
+			if e != nil {
+				cancel()
+				return nil, e
+			}
+			o.DownloadPath = path
+			o.SetPref("download.default_directory", path)
+			o.SetPref("download.prompt_for_download", false)
+		}
+		if o.UserDataPath == "" && (o.TempPath != "" || o.SystemProfilePath != "" || len(o.Flags) > 0 || o.ClearFileFlags || len(o.DeletePreferences) > 0 || o.Preferences != nil) {
+			if o.TempPath != "" {
+				if e := os.MkdirAll(o.TempPath, 0700); e != nil {
+					cancel()
+					return nil, e
+				}
+			}
+			path, e := os.MkdirTemp(o.TempPath, "drissionpage-profile-*")
+			if e != nil {
+				cancel()
+				return nil, e
+			}
+			o.UserDataPath = path
+			b.temporaryProfile = true
+		}
 		if o.UserDataPath != "" {
 			l.UserDataDir(o.UserDataPath)
 		} else {
@@ -141,19 +208,26 @@ func NewChromium(ctx context.Context, options ...*ChromiumOptions) (*Chromium, e
 		if o.Proxy != "" {
 			l.Proxy(o.Proxy)
 		}
-		if o.Preferences != nil {
-			data, e := browserPreferences(o)
-			if e != nil {
+		if o.UserDataPath != "" {
+			if e := prepareBrowserProfile(o); e != nil {
 				cancel()
+				if b.temporaryProfile {
+					l.Cleanup()
+				}
 				return nil, e
 			}
-			l.Preferences(string(data))
 		}
+
+		o.UserDataPath = l.Get(flags.UserDataDir)
+		b.options = o
 		if len(o.Extensions) > 0 {
 			l.Delete("disable-extensions")
 			l.Set("load-extension", strings.Join(o.Extensions, ","))
 		}
 		for _, arg := range o.Arguments {
+			if strings.HasPrefix(arg, "--user-data-dir=") {
+				continue
+			}
 			parts := strings.SplitN(strings.TrimPrefix(arg, "--"), "=", 2)
 			if len(parts) == 2 {
 				l.Set(flags.Flag(parts[0]), parts[1])
@@ -318,7 +392,7 @@ func (b *Chromium) NewContext(ctx context.Context, options ...ContextOptions) (*
 	r := b.browser.Context(b.browser.GetContext())
 	r.BrowserContextID = created.BrowserContextID
 	life, cancel := context.WithCancel(b.browser.GetContext())
-	return &Chromium{browser: r.Context(life), options: b.options, cancel: cancel, owned: true, hooks: b.hooks}, nil
+	return &Chromium{browser: r.Context(life), options: b.options, cancel: cancel, owned: true, hooks: b.hooks, endpoint: b.endpoint}, nil
 }
 func (b *Chromium) RunCDP(ctx context.Context, method string, params any) (json.RawMessage, error) {
 	return b.browser.Call(ctx, "", method, params)

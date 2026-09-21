@@ -19,17 +19,24 @@ import (
 )
 
 type SessionOptions struct {
-	Timeout       time.Duration
-	Headers       http.Header
-	Proxy         string
-	RetryTimes    int
-	RetryInterval time.Duration
-	MaxBodyBytes  int64
-	Client        *http.Client `json:"-"`
-	Params        url.Values
-	Username      string
-	Password      string `json:"-"`
-	Encoding      string
+	Timeout               time.Duration
+	Headers               http.Header
+	Proxy                 string
+	RetryTimes            int
+	RetryInterval         time.Duration
+	MaxBodyBytes          int64
+	Client                *http.Client `json:"-"`
+	Params                url.Values
+	Username              string
+	Password              string `json:"-"`
+	Encoding              string
+	HTTPProxy, HTTPSProxy string
+	VerifyTLS, TrustEnv   *bool
+	MaxRedirects          *int
+	CAFile                string
+	CertFile, KeyFile     string
+	Hooks                 []ResponseHook               `json:"-"`
+	Adapters              map[string]http.RoundTripper `json:"-"`
 }
 
 func NewSessionOptions() *SessionOptions {
@@ -105,7 +112,12 @@ func NewSessionPage(options ...*SessionOptions) (*SessionPage, error) {
 		transport.Proxy = http.ProxyURL(u)
 		client.Transport = transport
 	}
-	return &SessionPage{client: client, options: o}, nil
+	page := &SessionPage{client: client, options: o}
+	if err := page.applyOptions(o); err != nil {
+		page.Close()
+		return nil, err
+	}
+	return page, nil
 }
 func (p *SessionPage) Client() *http.Client { p.mu.RLock(); defer p.mu.RUnlock(); return p.client }
 func (p *SessionPage) Get(ctx context.Context, target string, options ...RequestOptions) (*Response, error) {
@@ -132,62 +144,7 @@ func (p *SessionPage) Request(ctx context.Context, method, target string, option
 	if len(options) > 0 {
 		o = options[0]
 	}
-	u, err := url.Parse(target)
-	if err != nil {
-		return nil, err
-	}
-	q := u.Query()
-	for k, vs := range settings.Params {
-		if _, exists := q[k]; !exists {
-			q[k] = append([]string(nil), vs...)
-		}
-	}
-	for k, vs := range o.Params {
-		q[k] = append([]string(nil), vs...)
-	}
-	u.RawQuery = q.Encode()
-	body := o.Data
-	contentType := ""
-	if o.JSON != nil {
-		body, err = json.Marshal(o.JSON)
-		contentType = "application/json"
-	} else if o.Form != nil {
-		body = []byte(o.Form.Encode())
-		contentType = "application/x-www-form-urlencoded"
-	}
-	if err != nil {
-		return nil, err
-	}
-	if len(o.Files) > 0 {
-		var buf bytes.Buffer
-		w := multipart.NewWriter(&buf)
-		for k, vs := range o.Form {
-			for _, v := range vs {
-				if err = w.WriteField(k, v); err != nil {
-					return nil, err
-				}
-			}
-		}
-		for field, path := range o.Files {
-			f, e := os.Open(path)
-			if e != nil {
-				return nil, e
-			}
-			part, e := w.CreateFormFile(field, filepath.Base(path))
-			if e == nil {
-				_, e = io.Copy(part, f)
-			}
-			f.Close()
-			if e != nil {
-				return nil, e
-			}
-		}
-		if err = w.Close(); err != nil {
-			return nil, err
-		}
-		body = buf.Bytes()
-		contentType = w.FormDataContentType()
-	}
+	var err error
 	retries := settings.RetryTimes
 	method = strings.ToUpper(method)
 	if method != "GET" && method != "HEAD" && method != "OPTIONS" && !o.RetryUnsafe {
@@ -200,27 +157,9 @@ func (p *SessionPage) Request(ctx context.Context, method, target string, option
 				return result, err
 			}
 		}
-		req, e := http.NewRequestWithContext(ctx, method, u.String(), bytes.NewReader(body))
+		req, e := buildSessionRequest(ctx, method, target, settings, o)
 		if e != nil {
 			return nil, e
-		}
-		req.Header = settings.Headers.Clone()
-		if req.Header == nil {
-			req.Header = make(http.Header)
-		}
-		if contentType != "" {
-			req.Header.Set("Content-Type", contentType)
-		}
-		for k, vs := range o.Headers {
-			req.Header[k] = append([]string(nil), vs...)
-		}
-		for _, c := range o.Cookies {
-			req.AddCookie(c)
-		}
-		if o.Username != "" {
-			req.SetBasicAuth(o.Username, o.Password)
-		} else if settings.Username != "" {
-			req.SetBasicAuth(settings.Username, settings.Password)
 		}
 		res, e := client.Do(req)
 		if e != nil {
@@ -374,4 +313,86 @@ func (p *SessionPage) Close() {
 	p.closed = true
 	p.mu.Unlock()
 	p.Client().CloseIdleConnections()
+}
+
+func buildSessionRequest(ctx context.Context, method, target string, settings SessionOptions, o RequestOptions) (*http.Request, error) {
+	u, err := url.Parse(target)
+	if err != nil {
+		return nil, err
+	}
+	q := u.Query()
+	for k, vs := range settings.Params {
+		if _, exists := q[k]; !exists {
+			q[k] = append([]string(nil), vs...)
+		}
+	}
+	for k, vs := range o.Params {
+		q[k] = append([]string(nil), vs...)
+	}
+	u.RawQuery = q.Encode()
+	body := o.Data
+	contentType := ""
+	if o.JSON != nil {
+		body, err = json.Marshal(o.JSON)
+		contentType = "application/json"
+	} else if o.Form != nil {
+		body = []byte(o.Form.Encode())
+		contentType = "application/x-www-form-urlencoded"
+	}
+	if err != nil {
+		return nil, err
+	}
+	if len(o.Files) > 0 {
+		var buf bytes.Buffer
+		w := multipart.NewWriter(&buf)
+		for k, vs := range o.Form {
+			for _, v := range vs {
+				if err = w.WriteField(k, v); err != nil {
+					return nil, err
+				}
+			}
+		}
+		for field, path := range o.Files {
+			f, e := os.Open(path)
+			if e != nil {
+				return nil, e
+			}
+			part, e := w.CreateFormFile(field, filepath.Base(path))
+			if e == nil {
+				_, e = io.Copy(part, f)
+			}
+			f.Close()
+			if e != nil {
+				return nil, e
+			}
+		}
+		if err = w.Close(); err != nil {
+			return nil, err
+		}
+		body = buf.Bytes()
+		contentType = w.FormDataContentType()
+	}
+	req, e := http.NewRequestWithContext(ctx, method, u.String(), bytes.NewReader(body))
+	if e != nil {
+		return nil, e
+	}
+	req.Header = settings.Headers.Clone()
+	if req.Header == nil {
+		req.Header = make(http.Header)
+	}
+	if contentType != "" {
+		req.Header.Set("Content-Type", contentType)
+	}
+	for k, vs := range o.Headers {
+		req.Header[k] = append([]string(nil), vs...)
+	}
+	for _, c := range o.Cookies {
+		req.AddCookie(c)
+	}
+	if o.Username != "" {
+		req.SetBasicAuth(o.Username, o.Password)
+	} else if settings.Username != "" {
+		req.SetBasicAuth(settings.Username, settings.Password)
+	}
+	return req, nil
 }

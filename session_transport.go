@@ -90,6 +90,10 @@ func (p *SessionPage) configureTransport(change func(*http.Transport)) error {
 	if transport == nil {
 		transport = http.DefaultTransport
 	}
+	extensions, wrapped := transport.(*sessionTransport)
+	if wrapped {
+		transport = extensions.base
+	}
 	original, ok := transport.(*http.Transport)
 	if !ok {
 		return fmt.Errorf("custom RoundTripper cannot be reconfigured; supply a new HTTP client")
@@ -98,6 +102,11 @@ func (p *SessionPage) configureTransport(change func(*http.Transport)) error {
 	change(next)
 	client := *p.client
 	client.Transport = next
+	if wrapped {
+		cloned := *extensions
+		cloned.base = next
+		client.Transport = &cloned
+	}
 	p.client = &client
 	original.CloseIdleConnections()
 	return nil

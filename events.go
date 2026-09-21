@@ -93,3 +93,9 @@ func (q *eventQueue[T]) pop(ctx context.Context) (T, error) {
 		}
 	}
 }
+
+func (q *eventQueue[T]) snapshot() []T {
+	q.mu.Lock()
+	defer q.mu.Unlock()
+	return append([]T(nil), q.items...)
+}

@@ -325,7 +325,7 @@ func (e *ChromiumElement) DragTo(ctx context.Context, target *ChromiumElement, d
 	if err := e.ScrollIntoView(ctx); err != nil {
 		return err
 	}
-	r, err := target.Rect(ctx)
+	r, err := target.RootRect(ctx)
 	if err != nil {
 		return err
 	}
@@ -335,19 +335,19 @@ func (e *ChromiumElement) Drag(ctx context.Context, x, y float64, duration time.
 	if err := e.ScrollIntoView(ctx); err != nil {
 		return err
 	}
-	r, err := e.Rect(ctx)
+	r, err := e.RootRect(ctx)
 	if err != nil {
 		return err
 	}
 	return e.dragPoint(ctx, r.X+r.Width/2+x, r.Y+r.Height/2+y, duration)
 }
 func (e *ChromiumElement) dragPoint(ctx context.Context, x, y float64, d time.Duration) error {
-	r, err := e.Rect(ctx)
+	r, err := e.RootRect(ctx)
 	if err != nil {
 		return err
 	}
-	a := e.tab.Actions(ctx).MoveTo(r.X+r.Width/2, r.Y+r.Height/2).Hold("left")
-	defer e.tab.Actions(context.Background()).Release("left")
+	a := e.tab.topTab().Actions(ctx).MoveTo(r.X+r.Width/2, r.Y+r.Height/2).Hold("left")
+	defer e.tab.topTab().Actions(context.Background()).Release("left")
 	steps := 20
 	for i := 1; i <= steps; i++ {
 		f := float64(i) / float64(steps)

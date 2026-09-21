@@ -76,9 +76,9 @@ func (e *ChromiumElement) ClickAt(ctx context.Context, x, y float64, button stri
 	if err := e.ScrollIntoView(ctx); err != nil {
 		return err
 	}
-	r, err := e.Rect(ctx)
+	r, err := e.RootRect(ctx)
 	if err != nil {
 		return err
 	}
-	return e.tab.Actions(ctx).MoveTo(r.X+x, r.Y+y).Click(button, count).Do()
+	return e.tab.topTab().Actions(ctx).MoveTo(r.X+x, r.Y+y).Click(button, count).Do()
 }

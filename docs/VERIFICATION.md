@@ -1,31 +1,58 @@
 # 验证记录
 
-日期：2026-09-21。
+日期：2026-09-21。环境：Windows、Go 1.26.4、实际 Chrome、FFmpeg/ffprobe。
 
-## 最新验证结果
+## 本机验证
 
-- Windows / Go 1.26.4：`go test -count=1 -timeout 3m -json ./...`，**19 个顶层测试组及其子用例通过**，总测试耗时 48.795 秒。
-- `TestAsyncHTMLDemo` 的 **18 个场景组全部通过**，页面源于原异步版 HTML 测试台；范围见 [覆盖说明](HTML_DEMO.md)。
-- 设置了 `DRISSIONPAGE_BROWSER` 和 `DRISSIONPAGE_FFMPEG`，真实 Chrome 与 MP4 导出用例执行，测试用例跳过数为 0。
-- 新增 frame 同源/跨站往返与文件拖入测试，修复驱动缺陷后独立连续运行三次通过，汇总运行再次通过。
-- 重连、重定向逐跳 extra-info 配对、队列溢出、会话认证/参数/编码/代理/TLS/重定向限制测试通过。
-- `go vet ./...` 通过。
-- Linux amd64、macOS arm64 的 `CGO_ENABLED=0 go build ./...` 均通过。
-- 四个 HTML 副本 SHA-256 分别与原异步项目中的同名文件相同。
-- 完整机器可读结果：[test-results-2026-09-21.jsonl](test-results-2026-09-21.jsonl)。
+- 常规测试：25 个顶层测试组，连同子测试共 95 条通过记录；失败 0，测试用例跳过 0。耗时 47.089 秒。
+- 竞态检测：相同测试范围已通过；最终结果与耗时以 [race-results-2026-09-21.jsonl](race-results-2026-09-21.jsonl) 为准。
+- 原 HTML 测试台：18 个场景组全部执行，覆盖范围见 [HTML_DEMO.md](HTML_DEMO.md)。
+- Python 参考结果：22 个定位、9 个格式化文本、9 个 XPath 标量用例，40 项一致。原版运行脚本：`scripts/python-reference.py`，测试数据：`testdata/reference.json`。
+- 新增：配置副本/flags/偏好、HTTP hooks/最长前缀 adapter/stream、Windows 窗口隐藏恢复/屏幕位置、定时录屏/真实时间轴/屏幕共享 WebM、FFprobe 解析、frame 进程切换/几何/存储、JS 句柄、多选追加/取消、动态监听/容量、弹窗观察与等待。
+- iframe 进程切换相关测试在修复短暂失效错误后连续运行 3 次通过。
+- `go vet ./...` 通过。Linux amd64、macOS arm64 的 `CGO_ENABLED=0 go build ./...` 通过。
+- 普通测试日志：[test-results-2026-09-21.jsonl](test-results-2026-09-21.jsonl)。
 
-Linux/macOS 仅验证交叉编译，没有在对应系统运行浏览器测试。
+“95 条”包含父测试与子测试，不能解读为 95 个相互独立场景。没有测试文件的内部包会显示 package skip，不计入用例跳过数。
 
-## 未通过或未完成
+## 竞态检测工具链
 
-- Windows `go test -race ./...` 在测试程序启动时退出，状态 `0xc0000139`。未获得竞态检测结果。
-- Python 原版全部 API、参数、错误语义的逐项等价对照尚未完成。
-- 未实现项和行为差异见 [迁移清单](MIGRATION.md)。
+早期使用旧 MinGW GCC 8.1 时，测试程序启动即遇到 `0xc0000139`。本轮使用 LLVM-MinGW **20260908 / UCRT x86_64** 后，实际完成 `go test -race` 并通过。
 
-## 源码与交付状态
+工具链下载自 mstorsjo/llvm-mingw 官方发布仓库，存于被 Git 忽略的 `.tools`。这是本机验证工具，不是运行库依赖；工具链文件不提交。
 
-- Python 同步版源码目录：`E:\code\open-source\DrissionPage`，原工作区保持干净。
-- 异步版源码目录：`E:\code\open-source\DrissionPage-async`，原工作区保持干净。
-- Go 项目目录：`E:\code\open-source\DrissionPage-go`，已建立独立 Git 仓库。
-- 原版和 Go 项目的 LICENSE 文件 SHA-256 一致：`299744C4F3C91074CEA338F7386B4D66061423059DF938CAFD4026FD03CF422D`。
-- 上述测试完成时尚未提交或推送。后续按用户要求将当前开发版本提交至 `https://github.com/AIPythoner/DrissionPage-go`；提交与推送记录以 Git 历史为准，尚未发布正式版本或部署。
+## 复现
+
+```powershell
+$env:DRISSIONPAGE_BROWSER = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+$env:DRISSIONPAGE_FFMPEG = 'E:\Apps\ffmpeg\ffmpeg.exe'
+go test -count=1 -timeout 4m -v ./...
+go vet ./...
+
+# 竞态检测另需支持的 C 编译器
+$env:CC = (Resolve-Path '.tools/llvm-mingw-20260908-ucrt-x86_64/bin/clang.exe').Path
+$env:PATH = (Resolve-Path '.tools/llvm-mingw-20260908-ucrt-x86_64/bin').Path + ';' + $env:PATH
+$env:CGO_ENABLED = '1'
+go test -race -count=1 -timeout 5m -v ./...
+```
+
+原版对照数据可重新生成：
+
+```powershell
+python -B scripts/python-reference.py E:\code\open-source\DrissionPage
+go test -run TestPythonStaticReference .
+```
+
+## 平台与兼容性边界
+
+本机实际运行的是 Windows 浏览器测试。Linux/macOS 的本机结果仅为交叉编译；GitHub Actions 已配置 Linux 浏览器和竞态验证，远端结果应查看对应提交的工作流。macOS 原生浏览器/屏幕录制没有实机验收。
+
+原 Python 的 488 条 demo 断言没有逐条移植，全部 API 参数/错误语义也没有穷尽对照。已验收范围、Go 替代接口与已知差异见 [MIGRATION.md](MIGRATION.md)；不能从模块覆盖或测试通过数推导全量等价百分比。
+
+## 源码与交付
+
+- Go 项目：`E:\code\open-source\DrissionPage-go`。
+- 原同步/异步项目工作区均保持干净。
+- 原 LICENSE 原样保留，SHA-256：`299744C4F3C91074CEA338F7386B4D66061423059DF938CAFD4026FD03CF422D`。
+- Rod、HTMLQuery、XPath 的许可证和本地修补记录均随源码提交。
+- GitHub 目标：[AIPythoner/DrissionPage-go](https://github.com/AIPythoner/DrissionPage-go)。实际提交和推送状态以 Git 历史为准；没有创建正式版本标签。

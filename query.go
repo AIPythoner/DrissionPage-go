@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/antchfx/htmlquery"
-	"github.com/antchfx/xpath"
+	"github.com/AIPythoner/DrissionPage-go/internal/htmlquery"
 	"github.com/AIPythoner/DrissionPage-go/internal/rod"
+	"github.com/AIPythoner/DrissionPage-go/internal/xpath"
 	"github.com/go-rod/rod/lib/proto"
 )
 

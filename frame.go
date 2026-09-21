@@ -41,7 +41,7 @@ func (f *ChromiumFrame) Screenshot(ctx context.Context, path string) ([]byte, er
 	return f.element.Screenshot(ctx, path)
 }
 func (f *ChromiumFrame) Get(ctx context.Context, target string) error {
-	ctx, cancel := context.WithTimeout(ctx, f.browser.options.PageLoadTimeout)
+	ctx, cancel := context.WithTimeout(ctx, f.settings().PageLoadTimeout)
 	defer cancel()
 	current, err := f.Resolve(ctx)
 	if err != nil {
@@ -58,8 +58,9 @@ func (f *ChromiumFrame) Get(ctx context.Context, target string) error {
 	if err != nil {
 		return err
 	}
+	fresh.config = f.config
 	f.ChromiumTab = fresh.ChromiumTab
-	if f.browser.options.LoadMode == "none" {
+	if f.settings().LoadMode == "none" {
 		return nil
 	}
 	return f.WaitLoad(ctx)

@@ -24,7 +24,7 @@ type ChromiumElement struct {
 
 func (e *ChromiumElement) Raw() *rod.Element { return e.element }
 func (e *ChromiumElement) operation(ctx context.Context) (*rod.Element, context.CancelFunc) {
-	c, cancel := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	c, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	return e.element.Context(c), cancel
 }
 func (e *ChromiumElement) Text(ctx context.Context) (string, error) {
@@ -66,6 +66,10 @@ func (e *ChromiumElement) Property(ctx context.Context, name string) (json.RawMe
 	return v.MarshalJSON()
 }
 func (e *ChromiumElement) RunJS(ctx context.Context, function string, args ...any) (json.RawMessage, error) {
+	function, args, prepErr := prepareScript(function, args)
+	if prepErr != nil {
+		return nil, prepErr
+	}
 	el, c := e.operation(ctx)
 	defer c()
 	v, err := el.Eval(function, args...)
@@ -133,7 +137,7 @@ func (e *ChromiumElement) Hover(ctx context.Context) error {
 // Avoid Rod's root requestAnimationFrame wait: background tabs can suspend it
 // beyond the operation deadline after window.open activates a different tab.
 func (e *ChromiumElement) mouseClick(ctx context.Context, button proto.InputMouseButton, count int) error {
-	ctx, cancel := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	ctx, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	defer cancel()
 	if err := e.element.Context(ctx).WaitEnabled(); err != nil {
 		return err
@@ -162,18 +166,13 @@ func (e *ChromiumElement) SetFiles(ctx context.Context, paths ...string) error {
 	return el.SetFiles(paths)
 }
 func (e *ChromiumElement) Select(ctx context.Context, values []string, selected bool) error {
-	el, c := e.operation(ctx)
-	defer c()
-	return el.Select(values, selected, rod.SelectorTypeCSSSector)
+	return e.selectMatching(ctx, "css", values, selected)
 }
 func (e *ChromiumElement) SelectByText(ctx context.Context, texts ...string) error {
-	el, c := e.operation(ctx)
-	defer c()
-	return el.Select(texts, true, rod.SelectorTypeText)
+	return e.selectMatching(ctx, "text", texts, true)
 }
 func (e *ChromiumElement) SelectByValue(ctx context.Context, values ...string) error {
-	_, err := e.RunJS(ctx, `function(values){for(const o of this.options)o.selected=values.includes(o.value);this.dispatchEvent(new Event('input',{bubbles:true}));this.dispatchEvent(new Event('change',{bubbles:true}));}`, values)
-	return err
+	return e.selectMatching(ctx, "value", values, true)
 }
 func (e *ChromiumElement) Check(ctx context.Context, checked bool) error {
 	_, err := e.RunJS(ctx, `function(checked){if(this.checked!==checked)this.click()}`, checked)
@@ -214,11 +213,11 @@ func (e *ChromiumElement) Remove(ctx context.Context) error {
 	return el.Remove()
 }
 func (e *ChromiumElement) Frame(ctx context.Context) (*ChromiumFrame, error) {
-	ctx, cancel := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	ctx, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	defer cancel()
 	for {
 		frame, err := e.frameOnce(ctx)
-		if !errors.Is(err, errFrameNotReady) {
+		if !errors.Is(err, errFrameNotReady) && !isFrameTransitionError(err) {
 			return frame, err
 		}
 		if err = waitDuration(ctx, 25*time.Millisecond); err != nil {
@@ -248,7 +247,7 @@ func (e *ChromiumElement) frameOnce(ctx context.Context) (*ChromiumFrame, error)
 			if err != nil {
 				return nil, err
 			}
-			return &ChromiumFrame{ChromiumTab: &ChromiumTab{page: page, browser: e.tab.browser}, element: e}, nil
+			return &ChromiumFrame{ChromiumTab: &ChromiumTab{page: page, browser: e.tab.browser, frameOwner: e, config: e.tab.config}, element: e}, nil
 		}
 	}
 	// A frame can temporarily have neither a local document nor an OOPIF target.
@@ -268,7 +267,7 @@ func (e *ChromiumElement) frameOnce(ctx context.Context) (*ChromiumFrame, error)
 	if err != nil {
 		return nil, err
 	}
-	return &ChromiumFrame{ChromiumTab: &ChromiumTab{p.Context(e.tab.page.GetContext()), e.tab.browser}, element: e}, nil
+	return &ChromiumFrame{ChromiumTab: &ChromiumTab{page: p.Context(e.tab.page.GetContext()), browser: e.tab.browser, frameOwner: e, config: e.tab.config}, element: e}, nil
 }
 func (e *ChromiumElement) ShadowRoot(ctx context.Context) (*ChromiumElement, error) {
 	el, c := e.operation(ctx)
@@ -337,7 +336,7 @@ func (e *ChromiumElement) Ele(ctx context.Context, value any, index ...int) (*Ch
 	if i == 0 {
 		return nil, ErrInvalidIndex
 	}
-	ctx, cancel := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	ctx, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	defer cancel()
 	for {
 		els, err := e.Eles(ctx, value)

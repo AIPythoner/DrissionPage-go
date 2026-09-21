@@ -72,12 +72,19 @@ func TestFrameRebindingAndFileDrop(t *testing.T) {
 		if e = frame.SetAttr(ctx, "src", url); e != nil {
 			t.Fatal(e)
 		}
+		var diagnostic string
 		e = WaitUntil(ctx, 25*time.Millisecond, func() (bool, error) {
 			current, err := frame.Resolve(ctx)
 			if err != nil {
+				diagnostic = fmt.Sprintf("resolve: %v", err)
+				return false, nil
+			}
+			if (current.page.SessionID != initial.page.SessionID) != (i == 0) {
+				diagnostic = fmt.Sprintf("waiting session swap current=%s initial=%s", current.page.SessionID, initial.page.SessionID)
 				return false, nil
 			}
 			actual, err := current.URL(ctx)
+			diagnostic = fmt.Sprintf("url=%s error=%v current session=%s initial session=%s", actual, err, current.page.SessionID, initial.page.SessionID)
 			if err != nil || actual != url {
 				return false, nil
 			}
@@ -92,7 +99,7 @@ func TestFrameRebindingAndFileDrop(t *testing.T) {
 			return text == "frame-ready", err
 		})
 		if e != nil {
-			t.Fatalf("frame transition %d: %v", i, e)
+			t.Fatalf("frame transition %d: %v; %s", i, e, diagnostic)
 		}
 	}
 	file := filepath.Join(t.TempDir(), "drop.txt")

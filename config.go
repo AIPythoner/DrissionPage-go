@@ -220,6 +220,13 @@ func (m *OptionsManager) ChromiumOptions() (*ChromiumOptions, error) {
 			o.UserDataPath = strings.TrimPrefix(arg, "--user-data-dir=")
 		}
 	}
+	o.TempPath = m.Get("paths", "tmp_path")
+	o.DownloadPath = m.Get("paths", "download_path")
+	for key, target := range map[string]any{"flags": &o.Flags, "auto_port": &o.UseAutoPort, "system_user_path": &o.SystemUserPath, "clear_file_flags": &o.ClearFileFlags, "existing_only": &o.ExistingOnly, "new_env": &o.NewEnvironment} {
+		if err := m.Decode("chromium_options", key, target); err != nil {
+			return nil, err
+		}
+	}
 	if err := m.duration("timeouts", "base", &o.Timeout); err != nil {
 		return nil, err
 	}
@@ -259,6 +266,80 @@ func (m *OptionsManager) SessionOptions() (*SessionOptions, error) {
 	}
 	if err := m.retry(&o.RetryTimes, &o.RetryInterval); err != nil {
 		return nil, err
+	}
+	o.HTTPProxy = m.Get("proxies", "http")
+	o.HTTPSProxy = m.Get("proxies", "https")
+	for key, target := range map[string]any{"trust_env": &o.TrustEnv, "max_redirects": &o.MaxRedirects} {
+		if err := m.Decode("session_options", key, target); err != nil {
+			return nil, err
+		}
+	}
+	var params map[string]any
+	if err := m.Decode("session_options", "params", &params); err != nil {
+		return nil, err
+	}
+	if len(params) > 0 {
+		o.Params = map[string][]string{}
+		for key, value := range params {
+			switch v := value.(type) {
+			case []any:
+				for _, item := range v {
+					o.Params[key] = append(o.Params[key], fmt.Sprint(item))
+				}
+			case nil:
+			default:
+				o.Params[key] = []string{fmt.Sprint(v)}
+			}
+		}
+	}
+	var verify any
+	if err := m.Decode("session_options", "verify", &verify); err != nil {
+		return nil, err
+	}
+	switch value := verify.(type) {
+	case bool:
+		o.VerifyTLS = &value
+	case string:
+		o.CAFile = value
+	case nil:
+	default:
+		return nil, fmt.Errorf("verify must be a boolean or CA path")
+	}
+	var cert any
+	if err := m.Decode("session_options", "cert", &cert); err != nil {
+		return nil, err
+	}
+	switch value := cert.(type) {
+	case string:
+		o.CertFile = value
+		o.KeyFile = value
+	case []any:
+		if len(value) != 2 {
+			return nil, fmt.Errorf("cert requires certificate and key paths")
+		}
+		var ok bool
+		o.CertFile, ok = value[0].(string)
+		if !ok {
+			return nil, fmt.Errorf("certificate path must be a string")
+		}
+		o.KeyFile, ok = value[1].(string)
+		if !ok {
+			return nil, fmt.Errorf("key path must be a string")
+		}
+	case nil:
+	default:
+		return nil, fmt.Errorf("invalid certificate configuration")
+	}
+	var auth []string
+	if err := m.Decode("session_options", "auth", &auth); err != nil {
+		return nil, err
+	}
+	if len(auth) > 0 {
+		if len(auth) != 2 {
+			return nil, fmt.Errorf("session auth requires username and password")
+		}
+		o.Username = auth[0]
+		o.Password = auth[1]
 	}
 	return o, nil
 }

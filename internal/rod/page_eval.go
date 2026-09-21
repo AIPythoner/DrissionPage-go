@@ -342,7 +342,7 @@ func (p *Page) getJSCtxID() (proto.RuntimeRemoteObjectID, error) {
 		return *p.jsCtxID, nil
 	}
 
-	node, err := p.element.Describe(1, true)
+	node, err := p.element.Context(p.ctx).Describe(1, true)
 	if err != nil {
 		return "", err
 	}

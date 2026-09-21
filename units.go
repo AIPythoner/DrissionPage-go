@@ -16,7 +16,7 @@ import (
 type ElementStates struct{ Selected, Checked, Displayed, Enabled, Alive, InViewport, WholeInViewport, Covered, Clickable, HasRect bool }
 
 func (e *ChromiumElement) States(ctx context.Context) (*ElementStates, error) {
-	data, err := e.RunJS(ctx, `function(){const r=this.getBoundingClientRect(),s=getComputedStyle(this),v=r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none',x=Math.min(innerWidth-1,Math.max(0,r.x+r.width/2)),y=Math.min(innerHeight-1,Math.max(0,r.y+r.height/2)),top=this.ownerDocument.elementFromPoint(x,y),covered=!!top&&top!==this&&!this.contains(top);return {Selected:!!this.selected,Checked:!!this.checked,Displayed:v,Enabled:!this.disabled,Alive:this.isConnected,InViewport:r.bottom>0&&r.right>0&&r.top<innerHeight&&r.left<innerWidth,WholeInViewport:r.top>=0&&r.left>=0&&r.bottom<=innerHeight&&r.right<=innerWidth,Covered:covered,Clickable:v&&!this.disabled&&!covered,HasRect:r.width>0&&r.height>0}}`)
+	data, err := e.RunJS(ctx, `function(){const target=this.nodeType===11?this.host:this;const r=target.getBoundingClientRect(),s=getComputedStyle(target),v=r.width>0&&r.height>0&&s.visibility!=='hidden'&&s.display!=='none',x=Math.min(innerWidth-1,Math.max(0,r.x+r.width/2)),y=Math.min(innerHeight-1,Math.max(0,r.y+r.height/2)),top=this.ownerDocument.elementFromPoint(x,y),covered=!!top&&top!==this&&!this.contains(top);return {Selected:!!this.selected,Checked:!!this.checked,Displayed:v,Enabled:!this.disabled,Alive:this.isConnected,InViewport:r.bottom>0&&r.right>0&&r.top<innerHeight&&r.left<innerWidth,WholeInViewport:r.top>=0&&r.left>=0&&r.bottom<=innerHeight&&r.right<=innerWidth,Covered:covered,Clickable:v&&!this.disabled&&!covered,HasRect:r.width>0&&r.height>0}}`)
 	if err != nil {
 		if errors.Is(err, cdp.ErrObjNotFound) || errors.Is(err, cdp.ErrCtxDestroyed) || errors.Is(err, cdp.ErrCtxNotFound) {
 			return &ElementStates{}, nil
@@ -28,7 +28,7 @@ func (e *ChromiumElement) States(ctx context.Context) (*ElementStates, error) {
 	return &s, err
 }
 func (e *ChromiumElement) WaitState(ctx context.Context, state string, want bool) error {
-	ctx, c := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	ctx, c := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	defer c()
 	for {
 		s, err := e.States(ctx)
@@ -171,7 +171,7 @@ func (t *ChromiumTab) WaitTitle(ctx context.Context, text string, exclude bool) 
 	return t.WaitJS(ctx, `(s,exclude)=>document.title.includes(s)!==exclude`, text, exclude)
 }
 func (t *ChromiumTab) WaitDeleted(ctx context.Context, locator any) error {
-	ctx, c := context.WithTimeout(ctx, t.browser.options.Timeout)
+	ctx, c := context.WithTimeout(ctx, t.settings().Timeout)
 	defer c()
 	for {
 		els, e := t.Eles(ctx, locator)
@@ -222,11 +222,12 @@ func (a *Actions) On(e *ChromiumElement) *Actions {
 	if a.err != nil {
 		return a
 	}
-	r, err := e.Rect(a.ctx)
+	r, err := e.RootRect(a.ctx)
 	if err != nil {
 		a.err = err
 		return a
 	}
+	a.tab = e.tab.topTab()
 	return a.MoveTo(r.X+r.Width/2, r.Y+r.Height/2)
 }
 func (a *Actions) Click(button string, count int) *Actions {

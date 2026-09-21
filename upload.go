@@ -35,7 +35,7 @@ func (e *ChromiumElement) ClickToUpload(ctx context.Context, paths ...string) er
 	if err != nil {
 		return err
 	}
-	life, cancel := context.WithTimeout(ctx, e.tab.browser.options.Timeout)
+	life, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
 	defer cancel()
 	page := e.tab.page.Context(life)
 	wait, err := page.HandleFileDialog()
@@ -62,14 +62,14 @@ func (e *ChromiumElement) DropFiles(ctx context.Context, paths ...string) error 
 	if err = e.ScrollIntoView(ctx); err != nil {
 		return err
 	}
-	rect, err := e.Rect(ctx)
+	rect, err := e.RootRect(ctx)
 	if err != nil {
 		return err
 	}
 	center := rect.Midpoint()
 	data := &proto.InputDragData{Items: []*proto.InputDragDataItem{}, Files: files, DragOperationsMask: 1}
 	for _, kind := range []proto.InputDispatchDragEventType{"dragEnter", "dragOver", "drop"} {
-		if err = (proto.InputDispatchDragEvent{Type: kind, X: center.X, Y: center.Y, Data: data}).Call(e.tab.page.Context(ctx)); err != nil {
+		if err = (proto.InputDispatchDragEvent{Type: kind, X: center.X, Y: center.Y, Data: data}).Call(e.tab.topTab().page.Context(ctx)); err != nil {
 			return err
 		}
 	}

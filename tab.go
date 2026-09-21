@@ -13,8 +13,10 @@ import (
 )
 
 type ChromiumTab struct {
-	page    *rod.Page
-	browser *Chromium
+	page       *rod.Page
+	browser    *Chromium
+	frameOwner *ChromiumElement
+	config     *ChromiumOptions
 }
 type ChromiumFrame struct {
 	*ChromiumTab
@@ -24,14 +26,14 @@ type ChromiumFrame struct {
 func (t *ChromiumTab) Raw() *rod.Page { return t.page }
 func (t *ChromiumTab) ID() string     { return string(t.page.TargetID) }
 func (t *ChromiumTab) operation(ctx context.Context) (*rod.Page, context.CancelFunc) {
-	c, cancel := context.WithTimeout(ctx, t.browser.options.Timeout)
+	c, cancel := context.WithTimeout(ctx, t.settings().Timeout)
 	return t.page.Context(c), cancel
 }
 func (t *ChromiumTab) Get(ctx context.Context, target string) error {
 	var err error
-	for attempt := 0; attempt <= t.browser.options.RetryTimes; attempt++ {
+	for attempt := 0; attempt <= t.settings().RetryTimes; attempt++ {
 		if attempt > 0 {
-			if err = waitDuration(ctx, t.browser.options.RetryInterval); err != nil {
+			if err = waitDuration(ctx, t.settings().RetryInterval); err != nil {
 				return err
 			}
 		}
@@ -43,13 +45,13 @@ func (t *ChromiumTab) Get(ctx context.Context, target string) error {
 	return err
 }
 func (t *ChromiumTab) navigateOnce(ctx context.Context, target string) error {
-	loadCtx, cancel := context.WithTimeout(ctx, t.browser.options.PageLoadTimeout)
+	loadCtx, cancel := context.WithTimeout(ctx, t.settings().PageLoadTimeout)
 	p := t.page.Context(loadCtx)
 	defer cancel()
 	if e := p.Navigate(target); e != nil {
 		return e
 	}
-	switch t.browser.options.LoadMode {
+	switch t.settings().LoadMode {
 	case "none":
 		return nil
 	case "eager":
@@ -82,7 +84,11 @@ func (t *ChromiumTab) URL(ctx context.Context) (string, error) {
 	return r.Value.Str(), nil
 }
 func (t *ChromiumTab) RunJS(ctx context.Context, function string, args ...any) (json.RawMessage, error) {
-	jsCtx, c := context.WithTimeout(ctx, t.browser.options.ScriptTimeout)
+	function, args, err := prepareScript(function, args)
+	if err != nil {
+		return nil, err
+	}
+	jsCtx, c := context.WithTimeout(ctx, t.settings().ScriptTimeout)
 	p := t.page.Context(jsCtx)
 	defer c()
 	r, e := p.Eval(function, args...)
@@ -155,7 +161,7 @@ func (t *ChromiumTab) Ele(ctx context.Context, value any, index ...int) (*Chromi
 	if i == 0 {
 		return nil, ErrInvalidIndex
 	}
-	ctx, cancel := context.WithTimeout(ctx, t.browser.options.Timeout)
+	ctx, cancel := context.WithTimeout(ctx, t.settings().Timeout)
 	defer cancel()
 	for {
 		els, e := t.Eles(ctx, value)

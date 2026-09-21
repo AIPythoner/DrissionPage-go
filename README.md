@@ -2,8 +2,8 @@
 
 基于 DrissionPage Python **5.0.0b1**（源码提交 `b46345b`）迁移的独立 Go 项目。
 
-迁移仍在进行。已实现的模块和仍需补齐的兼容性项目见 [迁移清单](docs/MIGRATION.md)。
-原项目版权及使用条件保留在 [LICENSE](LICENSE)。开发仓库为 [AIPythoner/DrissionPage-go](https://github.com/AIPythoner/DrissionPage-go)，当前为迁移中的开发版本，尚未发布正式版本。
+本项目提供浏览器控制、HTTP 会话、元素定位、事件监听、下载和录屏等 Go 接口。功能对应、语言差异和验收边界见 [迁移清单](docs/MIGRATION.md) 与 [原版 API 目录](docs/API_INVENTORY.md)。
+原项目版权及使用条件保留在 [LICENSE](LICENSE)。开发仓库为 [AIPythoner/DrissionPage-go](https://github.com/AIPythoner/DrissionPage-go)，当前以源码交付，尚未发布带版本号的正式发行包。
 
 ## 环境
 
@@ -115,13 +115,13 @@ go build -o drissionpage.exe ./cmd/drissionpage
 
 ### HTML 测试页面与验证结果
 
-2026-09-21 最新汇总：Windows / Go 1.26.4，**19 个顶层测试组及其子用例全部通过**，其中原 HTML 测试台的 18 个场景组全部通过。已指定真实 Chrome 和 FFmpeg，浏览器用例未跳过；完整结果保存在 [测试日志](docs/test-results-2026-09-21.jsonl)。
+2026-09-21 最新汇总：Windows / Go 1.26.4，**25 个顶层测试组及其子用例全部通过**，其中原 HTML 测试台的 18 个场景组全部通过。已指定真实 Chrome 和 FFmpeg，浏览器用例未跳过；完整结果保存在 [测试日志](docs/test-results-2026-09-21.jsonl)。
 
 早期测试页面嵌入 Go 测试代码。现已另外接入原异步版完整 HTML 测试台，页面副本位于 `testdata/async-demo/site/index.html`，由 Go 本机临时 HTTP 服务提供。测试覆盖元素定位与文本、表单操作、Shadow DOM、iframe、HTTP 会话、Cookie、网络监听、下载及模式切换等场景。
 
-`go vet ./...` 和 Linux amd64、macOS arm64 交叉编译均通过；后两者尚未在对应系统运行浏览器测试。Windows 竞态检测在测试程序启动时失败（`0xc0000139`），尚未获得检测结果。
+`go vet ./...` 和 Linux amd64、macOS arm64 交叉编译均通过；后两者尚未在对应系统运行浏览器测试。Windows 竞态检测已通过，结果见 [竞态日志](docs/race-results-2026-09-21.jsonl)。检测使用 LLVM-MinGW 20260908 UCRT 工具链；运行库本身不要求 C 编译器。
 
-**上述结果仅代表当前 Go 测试用例通过。完整迁移仍在进行，原 Python 项目全部 API、参数和错误语义的逐项等价验证尚未完成，不能据此认为原项目所有 demo 或功能都已验证。** 详细结果见 [验证记录](docs/VERIFICATION.md)，待完成项见 [迁移清单](docs/MIGRATION.md)。
+上述结果代表已列明的 Go 用例通过。另有 40 项定位、文本与 XPath 标量结果与原 Python 实际运行结果对照。原版全部参数组合与错误语义没有穷尽验证；详细证据见 [验证记录](docs/VERIFICATION.md)。
 
 ### 运行测试
 
@@ -135,7 +135,7 @@ go vet ./...
 
 未设置 `DRISSIONPAGE_BROWSER` 时，真实浏览器用例会明确标记跳过。测试站点均在本机临时启动。构造方法、操作方法返回错误，不使用 Rod 的 `Must*` 方法。
 
-监听输出队列默认每个保留 4096 条事件，可用 `ListenFilter.BufferSize` 设置；溢出丢弃最旧事件，可通过 `PacketStats` / `StreamStats` 查看计数。活动请求和正文大小仍需按采集场景管理。配置、HTTP 会话及 UI 动作的并发修改应由调用方串行安排；不同标签页可以并行操作。
+监听输出队列默认每个保留 4096 条事件，可用 `ListenFilter.BufferSize` 设置；溢出丢弃最旧事件，可通过 `PacketStats` / `StreamStats` 查看计数。活动请求/extra-info 默认上限 4096，可用 `MaxActiveRequests` 调整，超限停止并返回 `ErrListenerCapacity`；正文大小仍需按采集场景管理。配置、HTTP 会话及 UI 动作的并发修改应由调用方串行安排；不同标签页可以并行操作。
 
 ## 本轮迁移补充
 
@@ -146,4 +146,19 @@ go vet ./...
 - `ClickToUpload` 处理文件选择器，`DropFiles` 投放本地文件。
 - 会话新增 `SetParams`、`SetAuth`、`SetEncoding`、`SetProxies`、`SetTrustEnv`、`SetTLSConfig`、`SetVerifyTLS`、`SetClientCertificate`、`SetMaxRedirects`。
 
-完整迁移仍未完成，剩余兼容项以 [迁移清单](docs/MIGRATION.md) 为准。
+原版属性/链式 setter 在 Go 中使用方法、结构体字段、切片和 `error`，具体差异以 [迁移清单](docs/MIGRATION.md) 为准。
+
+## 补全交付的接口
+
+- **配置与启动**：`SetFlag`、`ClearFlagsInFile`、`RemovePrefFromFile`、`CopySystemProfile`、`UseSystemProfile`、`SetUser`、`SetTempPath`、`SetDownloadPath`；`ConnectOrLaunch` 提供本机端口连接或启动行为。
+- **会话扩展**：`SetResponseHooks`、`Mount`、`OpenStream`。hooks 可修改响应；adapter 按最长 URL 前缀选择；流响应由调用方关闭 Body。
+- **frame 与 JS**：frame 页面接口重新绑定会话；`RootRect`/`Geometry`/`ScreenRect`/`BoxModel` 获取不同坐标；`EvalHandle` 保留 DOM/对象句柄，使用后 `Release`。`RunJS` 接受函数、语句体或脚本文件。
+- **等待与状态**：`WaitElements`、`WaitStopMoving`、`WaitDisabledOrDeleted`、`DuringLoadStart`、`DuringAlert`、`WatchState`、`WaitBegin`、`WaitAll`。事件等待在 action 前订阅，观察器结束后 `Stop`。
+- **录制**：`StartRecording(ctx, dir, "video")` 定时采集；`"frugal_video"` 按重绘采集。停止后 `TimelineVideo` 保留真实帧间隔；`StartDisplayRecording` 对应屏幕共享录制，`Stop(ctx, "capture.webm")` 保存文件。
+- **交互**：`MiddleClick`、`MultiClick`、`Direction`、`Offset`、多选框追加/取消选择、`ShowTrail`、Windows 原生 `HideWindow`/`ShowWindow`。
+
+录屏集成测试需要同目录的 FFmpeg 和 ffprobe，并会启动专用有头测试浏览器。屏幕共享的自动选择参数只用于测试，库正常调用仍使用浏览器权限流程。
+
+源码中的 Rod 与 XPath 修补随本模块发布，下游 `go get` 不需要额外 replace 或修改模块缓存。来源见 [Rod 修补说明](internal/rod/PATCHES.md) 和 [XPath 修补说明](internal/XPATH_PATCHES.md)。
+
+GitHub Actions 配置执行 Linux 浏览器/竞态测试及其他目标的编译；CI 是否通过以对应提交的工作流结果为准。

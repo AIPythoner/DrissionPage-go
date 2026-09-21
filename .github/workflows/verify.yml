@@ -1,0 +1,36 @@
+name: Go 验证
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        go: ['1.23.x', '1.26.x']
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version: ${{ matrix.go }}
+      - name: 安装录屏和虚拟显示依赖
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg xvfb
+      - name: 静态检查
+        run: go vet ./...
+      - name: 浏览器集成及竞态检测
+        shell: bash
+        run: |
+          export DRISSIONPAGE_BROWSER="$(command -v google-chrome)"
+          export DRISSIONPAGE_FFMPEG="$(command -v ffmpeg)"
+          xvfb-run -a go test -race -count=1 -timeout 6m -v ./...
+      - name: 验证其他目标可编译
+        shell: bash
+        run: |
+          GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build ./...
+          GOOS=darwin GOARCH=arm64 CGO_ENABLED=0 go build ./...

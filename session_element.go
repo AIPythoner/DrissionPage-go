@@ -5,8 +5,8 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/AIPythoner/DrissionPage-go/internal/htmlquery"
 	"github.com/andybalholm/cascadia"
-	"github.com/antchfx/htmlquery"
 	"golang.org/x/net/html"
 )
 

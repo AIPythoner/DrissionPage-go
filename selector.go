@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 type SelectOption struct {
@@ -22,13 +23,54 @@ func (e *ChromiumElement) Options(ctx context.Context) ([]SelectOption, error) {
 	return out, err
 }
 func (e *ChromiumElement) SelectByIndex(ctx context.Context, indices ...int) error {
-	for _, i := range indices {
-		if i == 0 {
+	for _, index := range indices {
+		if index == 0 {
 			return ErrInvalidIndex
 		}
 	}
-	_, err := e.RunJS(ctx, `function(indices){if(this.tagName!=='SELECT')throw new Error('element is not SELECT');const selected=indices.map(i=>i>0?i-1:this.options.length+i);if(selected.some(i=>i<0||i>=this.options.length))throw new Error('option index out of range');if(!this.multiple&&selected.length>1)throw new Error('select is not multiple');for(let i=0;i<this.options.length;i++)this.options[i].selected=selected.includes(i);this.dispatchEvent(new Event('input',{bubbles:true}));this.dispatchEvent(new Event('change',{bubbles:true}))}`, indices)
-	return err
+	return e.selectMatching(ctx, "index", indices, true)
+}
+
+// selectMatching preserves other selections for multiple-select elements.
+func (e *ChromiumElement) selectMatching(ctx context.Context, kind string, values any, selected bool) error {
+	ctx, cancel := context.WithTimeout(ctx, e.tab.settings().Timeout)
+	defer cancel()
+	return WaitUntil(ctx, 25*time.Millisecond, func() (bool, error) {
+		data, err := e.RunJS(ctx, `function(kind,values,selected){
+ if(this.tagName!=='SELECT')throw Error('element is not SELECT');
+ const options=Array.from(this.options);let matches=[];
+ if(kind==='index'){for(const value of values){const option=options[value>0?value-1:options.length+value];if(!option)return false;matches.push(option)}}
+ else {for(const value of new Set(values)){const found=options.filter(o=>kind==='value'?o.value===value:kind==='text'?o.text===value:o.matches(value));if(!found.length)return false;matches.push(...found)}}
+ matches=Array.from(new Set(matches));if(!this.multiple)matches=matches.slice(0,1);
+ for(const option of matches){option.selected=selected;this.dispatchEvent(new CustomEvent('change',{bubbles:true}))};return true
+ }`, kind, values, selected)
+		if err != nil {
+			return false, err
+		}
+		var ok bool
+		err = json.Unmarshal(data, &ok)
+		return ok, err
+	})
+}
+func (e *ChromiumElement) CancelByIndex(ctx context.Context, indices ...int) error {
+	for _, index := range indices {
+		if index == 0 {
+			return ErrInvalidIndex
+		}
+	}
+	return e.selectMatching(ctx, "index", indices, false)
+}
+func (e *ChromiumElement) CancelByText(ctx context.Context, texts ...string) error {
+	return e.selectMatching(ctx, "text", texts, false)
+}
+func (e *ChromiumElement) IsMultiple(ctx context.Context) (bool, error) {
+	data, err := e.RunJS(ctx, `function(){if(this.tagName!=='SELECT')throw Error('element is not SELECT');return this.multiple}`)
+	if err != nil {
+		return false, err
+	}
+	var value bool
+	err = json.Unmarshal(data, &value)
+	return value, err
 }
 func (e *ChromiumElement) SelectAll(ctx context.Context) error { return e.selectMode(ctx, "all") }
 func (e *ChromiumElement) ClearSelection(ctx context.Context) error {
@@ -38,12 +80,11 @@ func (e *ChromiumElement) InvertSelection(ctx context.Context) error {
 	return e.selectMode(ctx, "invert")
 }
 func (e *ChromiumElement) selectMode(ctx context.Context, mode string) error {
-	_, err := e.RunJS(ctx, `function(mode){if(this.tagName!=='SELECT')throw new Error('element is not SELECT');if(mode!=='clear'&&!this.multiple)throw new Error('select is not multiple');for(const o of this.options)o.selected=mode==='all'||(mode==='invert'&&!o.selected);if(mode==='clear')this.selectedIndex=-1;this.dispatchEvent(new Event('input',{bubbles:true}));this.dispatchEvent(new Event('change',{bubbles:true}))}`, mode)
+	_, err := e.RunJS(ctx, `function(mode){if(this.tagName!=='SELECT')throw new Error('element is not SELECT');if(!this.multiple)throw new Error('select is not multiple');for(const o of this.options)o.selected=mode==='all'||(mode==='invert'&&!o.selected);if(mode==='clear')this.selectedIndex=-1;this.dispatchEvent(new Event('input',{bubbles:true}));this.dispatchEvent(new Event('change',{bubbles:true}))}`, mode)
 	return err
 }
 func (e *ChromiumElement) CancelSelection(ctx context.Context, values ...string) error {
-	_, err := e.RunJS(ctx, `function(values){if(this.tagName!=='SELECT')throw new Error('element is not SELECT');for(const o of this.options)if(values.includes(o.value))o.selected=false;this.dispatchEvent(new Event('input',{bubbles:true}));this.dispatchEvent(new Event('change',{bubbles:true}))}`, values)
-	return err
+	return e.selectMatching(ctx, "value", values, false)
 }
 func (e *ChromiumElement) SelectedOptions(ctx context.Context) ([]SelectOption, error) {
 	options, err := e.Options(ctx)

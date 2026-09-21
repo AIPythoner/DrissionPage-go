@@ -1,0 +1,226 @@
+{
+  "source_version": "5.0.0b1",
+  "source_commit": "b46345b",
+  "html": "<!doctype html><html><head><title>Reference</title></head><body>\n<main id=\"root\"><p id=\"a\" class=\"item first\" data-kind=\"alpha\">hello <b>world</b></p>\n<p id=\"b\" class=\"item\" data-kind=\"alphabet\">hello again</p><p id=\"c\" data-kind=\"beta\">尾部结尾</p>\n<div id=\"blocks\">before<div>inside</div>after<br>last</div>\n<pre id=\"pre\">  line 1\n    line 2\tend</pre>\n<table id=\"table\"><tr><td>A</td><td>B</td></tr><tr><th>C</th><td>D</td></tr></table>\n<div id=\"space\"> a   b &amp; c&nbsp;d <span> e </span> f </div>\n<div id=\"hidden\">visible<script>ignored()</script><style>.a{}</style><span>tail</span></div>\n<a id=\"link\" href=\"/next\">go</a><input id=\"disabled\" disabled><input id=\"enabled\">\n<div id=\"quote\" title=\"a'&quot;b\">quoted</div><div id=\"empty\"></div>\n</main></body></html>",
+  "locators": [
+    {
+      "locator": "#a",
+      "ids": [
+        "a"
+      ]
+    },
+    {
+      "locator": ".item",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "tag:p",
+      "ids": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "locator": "t:p",
+      "ids": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "locator": "@id=a",
+      "ids": [
+        "a"
+      ]
+    },
+    {
+      "locator": "@data-kind",
+      "ids": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "locator": "@data-kind=alpha",
+      "ids": [
+        "a"
+      ]
+    },
+    {
+      "locator": "@data-kind:alpha",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "@data-kind^alpha",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "@data-kind$bet",
+      "ids": [
+        "b"
+      ]
+    },
+    {
+      "locator": "tag:p@@class:item@!id=b",
+      "ids": [
+        "a"
+      ]
+    },
+    {
+      "locator": "@|id=a@|id=c",
+      "ids": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "locator": "text=hello again",
+      "ids": [
+        "b"
+      ]
+    },
+    {
+      "locator": "text:hello",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "text^hello",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "text$结尾",
+      "ids": [
+        "c"
+      ]
+    },
+    {
+      "locator": "tag:input@!disabled",
+      "ids": [
+        "enabled"
+      ]
+    },
+    {
+      "locator": "xpath://p[2]",
+      "ids": [
+        "b"
+      ]
+    },
+    {
+      "locator": "css:main > p.item",
+      "ids": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "locator": "@title=a'\"b",
+      "ids": [
+        "quote"
+      ]
+    },
+    {
+      "locator": "xpath://div[@id=\"empty\"]",
+      "ids": [
+        "empty"
+      ]
+    },
+    {
+      "locator": "#missing",
+      "ids": []
+    }
+  ],
+  "texts": [
+    {
+      "id": "a",
+      "text": "hello world"
+    },
+    {
+      "id": "b",
+      "text": "hello again"
+    },
+    {
+      "id": "c",
+      "text": "尾部结尾"
+    },
+    {
+      "id": "blocks",
+      "text": "before\ninside\nafter\nlast"
+    },
+    {
+      "id": "pre",
+      "text": "line 1\n    line 2\tend"
+    },
+    {
+      "id": "table",
+      "text": "A\tB\nC\tD"
+    },
+    {
+      "id": "space",
+      "text": "a b & c d e f"
+    },
+    {
+      "id": "hidden",
+      "text": "visible\ntail"
+    },
+    {
+      "id": "empty",
+      "text": ""
+    }
+  ],
+  "scalars": [
+    {
+      "expression": "string-length('中文🙂')",
+      "value": 3.0
+    },
+    {
+      "expression": "substring('甲乙丙丁', 2, 2)",
+      "value": "乙丙"
+    },
+    {
+      "expression": "substring('12345', 0, 3)",
+      "value": "12"
+    },
+    {
+      "expression": "substring('12345', -2, 4)",
+      "value": "1"
+    },
+    {
+      "expression": "substring('12345', 1.5, 2.6)",
+      "value": "234"
+    },
+    {
+      "expression": "substring('12345', 0 div 0, 3)",
+      "value": ""
+    },
+    {
+      "expression": "translate('甲乙甲丙', '甲乙', 'AB')",
+      "value": "ABA丙"
+    },
+    {
+      "expression": "translate('aba', 'aa', 'XY')",
+      "value": "XbX"
+    },
+    {
+      "expression": "count(//p)",
+      "value": 3.0
+    }
+  ]
+}
