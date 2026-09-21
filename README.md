@@ -119,7 +119,7 @@ go build -o drissionpage.exe ./cmd/drissionpage
 
 早期测试页面嵌入 Go 测试代码。现已另外接入原异步版完整 HTML 测试台，页面副本位于 `testdata/async-demo/site/index.html`，由 Go 本机临时 HTTP 服务提供。测试覆盖元素定位与文本、表单操作、Shadow DOM、iframe、HTTP 会话、Cookie、网络监听、下载及模式切换等场景。
 
-`go vet ./...` 和 Linux amd64、macOS arm64 交叉编译均通过；后两者尚未在对应系统运行浏览器测试。Windows 竞态检测已通过，结果见 [竞态日志](docs/race-results-2026-09-21.jsonl)。检测使用 LLVM-MinGW 20260908 UCRT 工具链；运行库本身不要求 C 编译器。
+`go vet ./...` 和 Linux amd64、macOS arm64 交叉编译均通过；Linux 已在 GitHub Actions 上通过 Go 1.23 / 1.26 的真实 Chrome 与竞态测试；macOS 尚未实机运行浏览器测试。Windows 竞态检测已通过，结果见 [竞态日志](docs/race-results-2026-09-21.jsonl)。检测使用 LLVM-MinGW 20260908 UCRT 工具链；运行库本身不要求 C 编译器。
 
 上述结果代表已列明的 Go 用例通过。另有 40 项定位、文本与 XPath 标量结果与原 Python 实际运行结果对照。原版全部参数组合与错误语义没有穷尽验证；详细证据见 [验证记录](docs/VERIFICATION.md)。
 
@@ -161,4 +161,4 @@ go vet ./...
 
 源码中的 Rod 与 XPath 修补随本模块发布，下游 `go get` 不需要额外 replace 或修改模块缓存。来源见 [Rod 修补说明](internal/rod/PATCHES.md) 和 [XPath 修补说明](internal/XPATH_PATCHES.md)。
 
-GitHub Actions 配置执行 Linux 浏览器/竞态测试及其他目标的编译；CI 是否通过以对应提交的工作流结果为准。
+GitHub Actions 已通过 Linux Go 1.23 / 1.26 的真实浏览器、录屏和竞态检测，以及 Windows/macOS 目标编译。已验证源码提交：`9530453`，见 [通过的工作流](https://github.com/AIPythoner/DrissionPage-go/actions/runs/35583111574) 和 [结果摘要](docs/ci-results-9530453.json)。

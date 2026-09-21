@@ -45,7 +45,9 @@ go test -run TestPythonStaticReference .
 
 ## 平台与兼容性边界
 
-本机实际运行的是 Windows 浏览器测试。Linux/macOS 的本机结果仅为交叉编译；GitHub Actions 已配置 Linux 浏览器和竞态验证，远端结果应查看对应提交的工作流。macOS 原生浏览器/屏幕录制没有实机验收。
+本机实际运行的是 Windows 浏览器测试。Linux 已通过 GitHub Actions 的 Go 1.23.x / 1.26.x 两组真实浏览器和竞态测试，均完成录屏与跨目标编译，源码提交为 `9530453`：[工作流 35583111574](https://github.com/AIPythoner/DrissionPage-go/actions/runs/35583111574)，[结果摘要](ci-results-9530453.json)。macOS 原生浏览器/屏幕录制没有实机验收。
+
+第一轮 Linux 验证发现屏幕共享未选到来源；修复为允许当前 tab 并按标题选择测试标签页后，两组均通过。参照 [Chrome 官方屏幕共享说明](https://developer.chrome.com/docs/web-platform/screen-sharing-controls)。此自动选择参数仅用于测试；正常接口仍由用户选择并授权。
 
 原 Python 的 488 条 demo 断言没有逐条移植，全部 API 参数/错误语义也没有穷尽对照。已验收范围、Go 替代接口与已知差异见 [MIGRATION.md](MIGRATION.md)；不能从模块覆盖或测试通过数推导全量等价百分比。
 
