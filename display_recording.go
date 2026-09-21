@@ -22,7 +22,7 @@ type DisplayRecording struct {
 func (t *ChromiumTab) StartDisplayRecording(ctx context.Context) (*DisplayRecording, error) {
 	keyData, err := t.RunJS(ctx, `async()=>{
  const key='__dp_record_'+crypto.randomUUID();
- const stream=await navigator.mediaDevices.getDisplayMedia({video:true,audio:false});
+ const stream=await navigator.mediaDevices.getDisplayMedia({video:true,audio:false,selfBrowserSurface:"include"});
  try {
  const recorder=new MediaRecorder(stream,{mimeType:'video/webm'});
  const state={recorder,stream,chunks:[],error:null};

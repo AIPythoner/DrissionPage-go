@@ -126,7 +126,7 @@ func TestRecordingWaitersAndNativeWindow(t *testing.T) {
 	ctx, cancel := context.WithTimeout(context.Background(), 50*time.Second)
 	defer cancel()
 	options := NewChromiumOptions().SetBrowserPath(browserPath).SetTempPath(t.TempDir())
-	options.SetArgument("--auto-select-desktop-capture-source=DrissionPage Recording Test")
+	options.SetArgument("--auto-select-tab-capture-source-by-title=DrissionPage Recording Test")
 	options.SetArgument("--enable-usermedia-screen-capturing")
 	options.SetArgument("--allow-http-screen-capture")
 	options.SetPref("download.prompt_for_download", false)
